@@ -4,6 +4,9 @@
 ### Status
 _Waar sta je globaal? wat loopt er goed/slecht? hoe verloopt de samenwerking? Wie heeft globaal welke delen uitgewerkt_
 
+Begin ging nogal wat moeilijk om de opdracht beschrijving te begrijpen.
+S2: ik ben bezig met waterzijde. Was wat moeilijk om uit te zoeken waar ik moest beginnen en zat daar vast maar ben uiteindelijk begonnen met purchaseorder te maken en
+van daaruit zal ik een dokoperatie maken met een schip.
 
 ### Stories
 _(Enkel voor stories die speciale aandacht vragen)_
