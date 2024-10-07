@@ -1,0 +1,30 @@
+###GET PurchaseOrder with poNumber
+GET localhost:8080/api/purchaseOrders/PO12345
+
+###GET all PurchaseOrders
+GET localhost:8080/api/purchaseOrders
+
+###POST new order
+POST http://localhost:8080/api/purchaseOrders
+Content-Type: application/json
+
+{
+  "poNumber": "PO12345",
+  "buyerName": "buyer",
+  "buyerAddress": "test address buyer",
+  "sellerName": "seller",
+  "sellerAddress": "test address seller",
+  "date": "2024-09-29T00:00:00",
+  "orderLines": [
+    {
+      "amount": 10,
+      "materialName": "GIPS"
+
+    },
+    {
+      "amount": 5,
+      "materialName": "IJZERERTS"
+    }
+  ],
+  "vesselNumber": "VN56789"
+}
