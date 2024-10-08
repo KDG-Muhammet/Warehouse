@@ -2,6 +2,7 @@ package be.kdg.sa.warehouse.controller.dto;
 
 import be.kdg.sa.warehouse.domain.OrderLine;
 import be.kdg.sa.warehouse.domain.PurchaseOrder;
+import be.kdg.sa.warehouse.domain.enums.Status;
 
 import java.util.Date;
 import java.util.List;
@@ -16,6 +17,7 @@ public class PurchaseOrderDto {
     private Date date;
     private List<OrderLineDto> orderLines;
     private String vesselNumber;
+    private Status status;
 
     // Constructors
 
@@ -27,6 +29,7 @@ public class PurchaseOrderDto {
         this.sellerAddress = purchaseOrder.getSeller().getAddress();
         this.date = purchaseOrder.getPurchaseDate();
         this.vesselNumber = purchaseOrder.getVesselNumber();
+        this.status = purchaseOrder.getStatus();
     }
 
 
@@ -94,6 +97,14 @@ public class PurchaseOrderDto {
 
     public void setSellerAddress(String sellerAddress) {
         this.sellerAddress = sellerAddress;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }
 

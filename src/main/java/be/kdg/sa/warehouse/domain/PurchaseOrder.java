@@ -1,5 +1,6 @@
 package be.kdg.sa.warehouse.domain;
 
+import be.kdg.sa.warehouse.domain.enums.Status;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -25,6 +26,8 @@ public class PurchaseOrder {
 
     @OneToMany(mappedBy = "purchaseOrder", cascade = CascadeType.ALL)
     private List<OrderLine> orderLines  = new ArrayList<>();
+
+    Status status;
 
 
     public PurchaseOrder(String poNumber, Date purchaseDate, String vesselNumber, Seller seller, Buyer buyer, List<OrderLine> orderLines) {
@@ -94,5 +97,13 @@ public class PurchaseOrder {
 
     public void setOrderLines(List<OrderLine> orderLines) {
         this.orderLines = orderLines;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

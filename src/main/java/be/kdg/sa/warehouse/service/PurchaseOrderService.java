@@ -3,6 +3,7 @@ package be.kdg.sa.warehouse.service;
 import be.kdg.sa.warehouse.controller.dto.OrderLineDto;
 import be.kdg.sa.warehouse.controller.dto.PurchaseOrderDto;
 import be.kdg.sa.warehouse.domain.*;
+import be.kdg.sa.warehouse.domain.enums.Status;
 import be.kdg.sa.warehouse.repository.BuyerRepository;
 import be.kdg.sa.warehouse.repository.PurchaseOrderRepository;
 import org.slf4j.Logger;
@@ -80,6 +81,7 @@ public class PurchaseOrderService {
         Seller seller = sellerService.findSellerByNameAndAddress(purchaseOrderDto.getSellerName(), purchaseOrderDto.getSellerAddress());
         // Maak de nieuwe PurchaseOrder aan
         PurchaseOrder purchaseOrder = new PurchaseOrder(purchaseOrderDto.getPoNumber(), purchaseOrderDto.getDate(), purchaseOrderDto.getVesselNumber(), seller, buyer, new ArrayList<>());
+        purchaseOrder.setStatus(Status.ONGOING);
         // Stel voor elke OrderLine de PurchaseOrder in
         for (OrderLineDto orderLineDto : purchaseOrderDto.getOrderLines()) {
 
