@@ -1,8 +1,8 @@
 ###GET PurchaseOrder with poNumber
-GET localhost:8080/api/purchaseOrders/PO12345
+GET localhost:8081/api/purchaseOrders/PO12345
 
 ###GET all PurchaseOrders
-GET localhost:8080/api/purchaseOrders
+GET localhost:8081/api/purchaseOrders
 
 ###POST new order
 POST http://localhost:8080/api/purchaseOrders
