@@ -9,11 +9,15 @@ public class PurchaseOrderRequestDto {
         this.vesselNumber = vesselNumber;
     }
 
-    public String getPurchaseOrderNumber() {
+    public PurchaseOrderRequestDto() {
+    }
+
+
+    public String getPoNumber() {
         return poNumber;
     }
 
-    public void setPurchaseOrderNumber(String poNumber) {
+    public void setPoNumber(String poNumber) {
         this.poNumber = poNumber;
     }
 
