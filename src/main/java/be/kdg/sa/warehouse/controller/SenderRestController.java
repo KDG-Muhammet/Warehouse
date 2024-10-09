@@ -1,8 +1,8 @@
 package be.kdg.sa.warehouse.controller;
 
 
-import be.kdg.sa.warehouse.controller.dto.PurchaseOrderRequestDto;
-import be.kdg.sa.warehouse.service.PurchaseOrderSenderService;
+import be.kdg.sa.warehouse.controller.dto.po.PurchaseOrderRequestDto;
+import be.kdg.sa.warehouse.service.po.PurchaseOrderSenderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/warehouse")
-public class SenderControlller {
+public class SenderRestController {
 
 
-    private PurchaseOrderSenderService purchaseOrderSenderService;
+    private final PurchaseOrderSenderService purchaseOrderSenderService;
     private static final Logger logger = LoggerFactory.getLogger(PurchaseOrderSenderService.class);
 
-    public SenderControlller(PurchaseOrderSenderService purchaseOrderSenderService) {
+    public SenderRestController(PurchaseOrderSenderService purchaseOrderSenderService) {
         this.purchaseOrderSenderService = purchaseOrderSenderService;
     }
 

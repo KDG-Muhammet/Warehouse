@@ -1,6 +1,6 @@
-package be.kdg.sa.warehouse.repository;
+package be.kdg.sa.warehouse.repository.po;
 
-import be.kdg.sa.warehouse.domain.OrderLine;
+import be.kdg.sa.warehouse.domain.po.OrderLine;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Collection;

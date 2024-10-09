@@ -1,4 +1,4 @@
-package be.kdg.sa.warehouse.controller.dto;
+package be.kdg.sa.warehouse.controller.dto.po;
 
 public class PurchaseOrderRequestDto {
     private String poNumber;

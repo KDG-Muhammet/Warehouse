@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class SellerService {
 
-    private SellerRepository sellerRepository;
+    private final SellerRepository sellerRepository;
 
     public SellerService(SellerRepository sellerRepository) {
         this.sellerRepository = sellerRepository;

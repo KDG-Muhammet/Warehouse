@@ -1,6 +1,6 @@
-package be.kdg.sa.warehouse.controller.dto;
+package be.kdg.sa.warehouse.controller.dto.po;
 
-import be.kdg.sa.warehouse.domain.OrderLine;
+import be.kdg.sa.warehouse.domain.po.OrderLine;
 
 public class OrderLineDto {
     private int amount;

@@ -1,6 +1,6 @@
-package be.kdg.sa.warehouse.repository;
+package be.kdg.sa.warehouse.repository.po;
 
-import be.kdg.sa.warehouse.domain.PurchaseOrder;
+import be.kdg.sa.warehouse.domain.po.PurchaseOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

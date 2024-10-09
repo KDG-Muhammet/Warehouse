@@ -14,6 +14,7 @@ public class Material {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(unique = true, nullable = false)
     @Enumerated(EnumType.STRING)
     private MaterialType type;
 
@@ -21,7 +22,7 @@ public class Material {
     private BigDecimal storagePrice;
     private BigDecimal sellingPrice;
 
-    public Material() {}
+    protected Material() {}
 
     public Material(MaterialType type, String description, BigDecimal storagePrice, BigDecimal sellingPrice) {
         this.type = type;

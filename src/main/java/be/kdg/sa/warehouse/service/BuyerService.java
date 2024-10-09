@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class BuyerService {
 
-    private BuyerRepository buyerRepository;
+    private final BuyerRepository buyerRepository;
 
     public BuyerService(BuyerRepository buyerRepository) {
         this.buyerRepository = buyerRepository;

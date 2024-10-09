@@ -1,0 +1,2 @@
+### GET All warehouses
+GET http://localhost:8081/api/warehouses

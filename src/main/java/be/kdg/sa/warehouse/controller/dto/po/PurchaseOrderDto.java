@@ -1,7 +1,6 @@
-package be.kdg.sa.warehouse.controller.dto;
+package be.kdg.sa.warehouse.controller.dto.po;
 
-import be.kdg.sa.warehouse.domain.OrderLine;
-import be.kdg.sa.warehouse.domain.PurchaseOrder;
+import be.kdg.sa.warehouse.domain.po.PurchaseOrder;
 import be.kdg.sa.warehouse.domain.enums.Status;
 
 import java.util.Date;

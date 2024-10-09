@@ -4,6 +4,13 @@
 ### Status
 _Waar sta je globaal? wat loopt er goed/slecht? hoe verloopt de samenwerking? Wie heeft globaal welke delen uitgewerkt_
 
+S1: Waar sta je globaal? wat loopt er goed/slecht? hoe verloopt de samenwerking? Wie heeft globaal welke delen uitgewerkt_
+
+Ik ben aan het werken aan landzijde en sinds ik al een basis en architectuur heb vastgelegd,
+zou alles normaal vlotjes moeten verlopen.
+
+Ik heb veel tijd verloren aan persistence gedeelte, maar ik ben blij dat die achter de rug is.
+
 Begin ging nogal wat moeilijk om de opdracht beschrijving te begrijpen.
 S2: ik ben bezig met waterzijde. Was wat moeilijk om uit te zoeken waar ik moest beginnen en zat daar vast maar ben uiteindelijk begonnen met purchaseorder te maken en
 van daaruit zal ik een dokoperatie maken met een schip.

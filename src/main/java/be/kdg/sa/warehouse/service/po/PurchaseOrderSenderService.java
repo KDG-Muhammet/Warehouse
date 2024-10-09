@@ -1,6 +1,6 @@
-package be.kdg.sa.warehouse.service;
+package be.kdg.sa.warehouse.service.po;
 
-import be.kdg.sa.warehouse.controller.dto.PurchaseOrderRequestDto;
+import be.kdg.sa.warehouse.controller.dto.po.PurchaseOrderRequestDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -10,14 +10,14 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class PurchaseOrderSenderService {
 
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
     private static final Logger logger = LoggerFactory.getLogger(PurchaseOrderService.class);
+    private static final String WATER_APP_URL = "http://localhost:8080/api/purchaseOrders";
 
     public PurchaseOrderSenderService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    private static final String WATER_APP_URL = "http://localhost:8080/api/purchaseOrders"; // Replace with actual water app URL
 
     public ResponseEntity<String> sendPurchaseOrderToWaterApp(String poNumber, String vesselNumber ){
         PurchaseOrderRequestDto requestDto = new PurchaseOrderRequestDto(poNumber, vesselNumber);

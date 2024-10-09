@@ -1,5 +1,7 @@
-package be.kdg.sa.warehouse.domain;
+package be.kdg.sa.warehouse.domain.po;
 
+import be.kdg.sa.warehouse.domain.Buyer;
+import be.kdg.sa.warehouse.domain.Seller;
 import be.kdg.sa.warehouse.domain.enums.Status;
 import jakarta.persistence.*;
 
@@ -27,7 +29,7 @@ public class PurchaseOrder {
     @OneToMany(mappedBy = "purchaseOrder", cascade = CascadeType.ALL)
     private List<OrderLine> orderLines  = new ArrayList<>();
 
-    Status status;
+    private Status status;
 
 
     public PurchaseOrder(String poNumber, Date purchaseDate, String vesselNumber, Seller seller, Buyer buyer, List<OrderLine> orderLines) {
@@ -39,7 +41,7 @@ public class PurchaseOrder {
         this.orderLines = orderLines;
     }
 
-    public PurchaseOrder() {
+    protected PurchaseOrder() {
 
     }
 

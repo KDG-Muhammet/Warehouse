@@ -1,11 +1,15 @@
-package be.kdg.sa.warehouse.service;
+package be.kdg.sa.warehouse.service.po;
 
-import be.kdg.sa.warehouse.controller.dto.OrderLineDto;
-import be.kdg.sa.warehouse.controller.dto.PurchaseOrderDto;
+import be.kdg.sa.warehouse.controller.dto.po.OrderLineDto;
+import be.kdg.sa.warehouse.controller.dto.po.PurchaseOrderDto;
 import be.kdg.sa.warehouse.domain.*;
 import be.kdg.sa.warehouse.domain.enums.Status;
-import be.kdg.sa.warehouse.repository.BuyerRepository;
-import be.kdg.sa.warehouse.repository.PurchaseOrderRepository;
+import be.kdg.sa.warehouse.domain.po.OrderLine;
+import be.kdg.sa.warehouse.domain.po.PurchaseOrder;
+import be.kdg.sa.warehouse.repository.po.PurchaseOrderRepository;
+import be.kdg.sa.warehouse.service.BuyerService;
+import be.kdg.sa.warehouse.service.MaterialService;
+import be.kdg.sa.warehouse.service.SellerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -16,11 +20,11 @@ import java.util.*;
 @Service
 public class PurchaseOrderService {
 
-    private PurchaseOrderRepository purchaseOrderRepository;
-    private BuyerService buyerService;
-    private SellerService sellerService;
-    private OrderLineService orderLineService;
-    private MaterialService materialService;
+    private final PurchaseOrderRepository purchaseOrderRepository;
+    private final BuyerService buyerService;
+    private final SellerService sellerService;
+    private final OrderLineService orderLineService;
+    private final MaterialService materialService;
 
     private static final Logger logger = LoggerFactory.getLogger(PurchaseOrderService.class);
 
@@ -33,7 +37,7 @@ public class PurchaseOrderService {
     }
 
     @Transactional(readOnly = true)
-    public Collection<PurchaseOrderDto> getAllOrders() {
+    public Collection<PurchaseOrderDto> findAllOrders() {
 
         Collection<PurchaseOrder> purchaseOrders = purchaseOrderRepository.findAll();
         List<PurchaseOrderDto> purchaseOrderDtos = new ArrayList<>();
@@ -56,7 +60,7 @@ public class PurchaseOrderService {
     }
 
     @Transactional(readOnly = true)
-    public PurchaseOrderDto getPurchaseOrderByPoNumber(String poNumber) {
+    public PurchaseOrderDto findPurchaseOrderByPoNumber(String poNumber) {
 
         PurchaseOrder purchaseOrder = purchaseOrderRepository.findPurchaseOrderByPoNumber(poNumber);
         // Convert to PurchaseOrderDto
@@ -76,25 +80,23 @@ public class PurchaseOrderService {
     }
 
     @Transactional
-    public PurchaseOrder makeOrder(PurchaseOrderDto purchaseOrderDto) {
+    public PurchaseOrder createPurchaseOrder(PurchaseOrderDto purchaseOrderDto) {
         Buyer buyer = buyerService.findBuyerByNameAndAddress(purchaseOrderDto.getBuyerName(), purchaseOrderDto.getBuyerAddress());
         Seller seller = sellerService.findSellerByNameAndAddress(purchaseOrderDto.getSellerName(), purchaseOrderDto.getSellerAddress());
         // Maak de nieuwe PurchaseOrder aan
         PurchaseOrder purchaseOrder = new PurchaseOrder(purchaseOrderDto.getPoNumber(), purchaseOrderDto.getDate(), purchaseOrderDto.getVesselNumber(), seller, buyer, new ArrayList<>());
         purchaseOrder.setStatus(Status.ONGOING);
         // Stel voor elke OrderLine de PurchaseOrder in
-        for (OrderLineDto orderLineDto : purchaseOrderDto.getOrderLines()) {
 
-            OrderLine orderLine = new OrderLine();
-
+        purchaseOrderDto.getOrderLines().forEach(orderLineDto -> {
             logger.info("incoming material:" + orderLineDto.getAmount() + orderLineDto.getMaterialName());
             Material material = materialService.findMaterialByType(orderLineDto.getMaterialName());
-            orderLine.setAmount(orderLineDto.getAmount());
-            orderLine.setMaterial(material);
 
+            OrderLine orderLine = new OrderLine(orderLineDto.getAmount(), material);
             orderLine.setPurchaseOrder(purchaseOrder);
+
             purchaseOrder.getOrderLines().add(orderLine);
-        }
+        });
 
         return purchaseOrderRepository.save(purchaseOrder);
     }

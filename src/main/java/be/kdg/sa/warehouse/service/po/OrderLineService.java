@@ -1,7 +1,7 @@
-package be.kdg.sa.warehouse.service;
+package be.kdg.sa.warehouse.service.po;
 
-import be.kdg.sa.warehouse.domain.OrderLine;
-import be.kdg.sa.warehouse.repository.OrderLineRepository;
+import be.kdg.sa.warehouse.domain.po.OrderLine;
+import be.kdg.sa.warehouse.repository.po.OrderLineRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -10,7 +10,7 @@ import java.util.UUID;
 @Service
 public class OrderLineService {
 
-    private OrderLineRepository orderLineRepository;
+    private final OrderLineRepository orderLineRepository;
 
     public OrderLineService(OrderLineRepository orderLineRepository) {
         this.orderLineRepository = orderLineRepository;

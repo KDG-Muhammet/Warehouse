@@ -19,7 +19,7 @@ public class Buyer {
         this.address = address;
     }
 
-    public Buyer() {
+    protected Buyer() {
 
     }
 

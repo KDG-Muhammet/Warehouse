@@ -1,5 +1,6 @@
-package be.kdg.sa.warehouse.domain;
+package be.kdg.sa.warehouse.domain.po;
 
+import be.kdg.sa.warehouse.domain.Material;
 import jakarta.persistence.*;
 
 import java.util.UUID;
@@ -17,14 +18,13 @@ public class OrderLine {
     @ManyToOne
     private PurchaseOrder purchaseOrder;
 
-    public OrderLine(UUID orderLineId, int amount, Material material) {
-        this.orderLineId = orderLineId;
+    public OrderLine(int amount, Material material) {
         this.amount = amount;
         this.material = material;
 
     }
 
-    public OrderLine() {
+    protected OrderLine() {
     }
 
     public UUID getOrderLineId() {

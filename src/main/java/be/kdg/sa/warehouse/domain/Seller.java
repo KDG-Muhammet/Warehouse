@@ -22,7 +22,7 @@ public class Seller {
         this.address = address;
     }
 
-    public Seller() {
+    protected Seller() {
 
     }
 
