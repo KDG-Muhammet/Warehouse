@@ -1,6 +1,7 @@
 package be.kdg.sa.warehouse.service.warehouse;
 
 import be.kdg.sa.warehouse.domain.Warehouse;
+import be.kdg.sa.warehouse.domain.enums.MaterialType;
 import be.kdg.sa.warehouse.repository.WarehouseRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,12 @@ public class WarehouseService {
     public Collection<Warehouse> findAllWarehouses() {
         logger.info("Finding all warehouses");
         return warehouseRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public Warehouse findWarehouseByMaterial_Type(MaterialType materialType) {
+        logger.info("Finding warehouse: {}", materialType);
+        return warehouseRepository.findWarehouseByMaterial_Type(materialType);
     }
 
 
