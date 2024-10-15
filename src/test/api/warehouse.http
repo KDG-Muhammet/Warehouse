@@ -1,2 +1,15 @@
+### UPDATE Material
+PUT http://localhost:8081/api/materials
+Content-Type: application/json
+
+{
+  "materialType": "PETCOKE",
+  "sellingPrice": "20",
+  "storagePrice": "500"
+}
+
+### GET All materials
+GET http://localhost:8081/api/materials
+
 ### GET All warehouses
 GET http://localhost:8081/api/warehouses

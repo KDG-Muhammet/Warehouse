@@ -1,4 +1,4 @@
-package be.kdg.sa.warehouse.controller.dto;
+package be.kdg.sa.warehouse.controller.dto.material;
 
 import be.kdg.sa.warehouse.domain.enums.MaterialType;
 

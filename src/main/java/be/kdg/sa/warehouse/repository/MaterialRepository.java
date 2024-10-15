@@ -8,4 +8,5 @@ import java.util.UUID;
 public interface MaterialRepository extends JpaRepository<Material, UUID> {
 
     Material findMaterialByType(MaterialType type);
+
 }

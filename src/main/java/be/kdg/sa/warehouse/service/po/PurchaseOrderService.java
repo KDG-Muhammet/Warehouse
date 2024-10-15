@@ -8,7 +8,7 @@ import be.kdg.sa.warehouse.domain.po.OrderLine;
 import be.kdg.sa.warehouse.domain.po.PurchaseOrder;
 import be.kdg.sa.warehouse.repository.po.PurchaseOrderRepository;
 import be.kdg.sa.warehouse.service.BuyerService;
-import be.kdg.sa.warehouse.service.MaterialService;
+import be.kdg.sa.warehouse.service.material.MaterialService;
 import be.kdg.sa.warehouse.service.SellerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,10 +1,8 @@
-package be.kdg.sa.warehouse.service;
+package be.kdg.sa.warehouse.service.material;
 
-import be.kdg.sa.warehouse.controller.dto.MaterialDto;
 import be.kdg.sa.warehouse.domain.Material;
 import be.kdg.sa.warehouse.domain.enums.MaterialType;
 import be.kdg.sa.warehouse.repository.MaterialRepository;
-import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -15,23 +13,21 @@ import java.util.List;
 public class MaterialService {
     private final MaterialRepository materialRepository;
     private final Logger logger = LoggerFactory.getLogger(MaterialService.class);
-    private final ModelMapper modelMapper;
 
 
-    public MaterialService(MaterialRepository materialRepository, ModelMapper modelMapper) {
+    public MaterialService(MaterialRepository materialRepository) {
         this.materialRepository = materialRepository;
-        this.modelMapper = modelMapper;
     }
 
     @Transactional(readOnly = true)
-    public Material findMaterialByType(String materialName) {
-        logger.info("Finding material by type: {}" ,materialName);
-        return materialRepository.findMaterialByType(MaterialType.valueOf(materialName));
+    public Material findMaterialByType(String materialType) {
+        logger.info("Finding material by type: {}" ,materialType);
+        return materialRepository.findMaterialByType(MaterialType.valueOf(materialType));
     }
 
     @Transactional(readOnly = true)
-    public List<MaterialDto> findAllMaterials() {
+    public List<Material> findAllMaterials() {
         logger.info("Finding all materials");
-        return materialRepository.findAll().stream().map(m -> modelMapper.map(m, MaterialDto.class)).toList();
+        return materialRepository.findAll();
     }
 }
