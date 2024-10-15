@@ -3,6 +3,7 @@ package be.kdg.sa.warehouse.controller;
 
 import be.kdg.sa.warehouse.controller.dto.po.PurchaseOrderDto;
 import be.kdg.sa.warehouse.domain.po.PurchaseOrder;
+import be.kdg.sa.warehouse.service.po.CreatePurchaseOrderService;
 import be.kdg.sa.warehouse.service.po.PurchaseOrderService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -14,9 +15,11 @@ import java.util.Collection;
 @RequestMapping("/api/purchaseOrders")
 public class PurchaseOrderRestController {
     private final PurchaseOrderService purchaseOrderService;
+    private final CreatePurchaseOrderService createPurchaseOrderService;
 
-    public PurchaseOrderRestController(PurchaseOrderService purchaseOrderService) {
+    public PurchaseOrderRestController(PurchaseOrderService purchaseOrderService, CreatePurchaseOrderService createPurchaseOrderService) {
         this.purchaseOrderService = purchaseOrderService;
+        this.createPurchaseOrderService = createPurchaseOrderService;
     }
 
     @GetMapping("/{poNumber}")
@@ -34,7 +37,7 @@ public class PurchaseOrderRestController {
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public PurchaseOrder addPurchaseOrder(@RequestBody @Valid PurchaseOrderDto purchaseOrderDto){
-        return purchaseOrderService.createPurchaseOrder(purchaseOrderDto);
+        return createPurchaseOrderService.createPurchaseOrder(purchaseOrderDto);
 
 
     }
