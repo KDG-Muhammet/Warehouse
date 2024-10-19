@@ -20,7 +20,13 @@ public class TruckHandler {
 
     @RabbitListener(queues = RabbitTopology.TOPIC_QUEUE_TRUCK)
     public void handleSenderPdtDto(SenderPdtDto senderPdtDto) {
-        logger.info("Load for {} -> Amount = {}", senderPdtDto.getWarehouse(), senderPdtDto.getMaterialWeight());
+        logger.info("   Load for {} -> Amount = {}", senderPdtDto.getWarehouse(), senderPdtDto.getMaterialWeight());
+        updateWarehouseService.updateWarehouseWithDelivery(senderPdtDto);
+    }
+
+    @RabbitListener(queues = RabbitTopology.TOPIC_QUEUE_TRUCK_FIFO)
+    public void handleSenderPdtDtoFifo(SenderPdtDto senderPdtDto) {
+        logger.info("   FIFO Load for {} -> Amount = {}", senderPdtDto.getWarehouse(), senderPdtDto.getMaterialWeight());
         updateWarehouseService.updateWarehouseWithDelivery(senderPdtDto);
     }
 }

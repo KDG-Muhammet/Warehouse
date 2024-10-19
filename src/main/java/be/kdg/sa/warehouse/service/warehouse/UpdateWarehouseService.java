@@ -27,7 +27,7 @@ public class UpdateWarehouseService {
         Warehouse warehouse = warehouseService.findWarehouseByMaterial_Type(materialType);
         warehouse.setOccupancy(senderPdtDto.getMaterialWeight());
 
-        logger.info("Warehouse {} updated. Occupancy = {}", senderPdtDto.getWarehouse(), warehouse.getOccupancy());
+        logger.info("   Warehouse {} updated. Occupancy = {}", senderPdtDto.getWarehouse(), warehouse.getOccupancy());
     }
 
     private MaterialType getMaterialEnumType(String warehouse) {

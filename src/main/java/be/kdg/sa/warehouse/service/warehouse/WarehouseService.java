@@ -21,13 +21,13 @@ public class WarehouseService {
 
     @Transactional(readOnly = true)
     public Collection<Warehouse> findAllWarehouses() {
-        logger.info("Finding all warehouses");
+        logger.info("   Finding all warehouses");
         return warehouseRepository.findAll();
     }
 
     @Transactional(readOnly = true)
     public Warehouse findWarehouseByMaterial_Type(MaterialType materialType) {
-        logger.info("Finding warehouse: {}", materialType);
+        logger.info("   Finding warehouse: {}", materialType);
         return warehouseRepository.findWarehouseByMaterial_Type(materialType);
     }
 

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitTopology {
     public static final String TOPIC_EXCHANGE = "truck-exchange";
     public static final String TOPIC_QUEUE_TRUCK = "truck-appointment-queue";
+    public static final String TOPIC_QUEUE_TRUCK_FIFO = "truck-fifo-queue";
 
     @Bean
     TopicExchange topicExchange(){
@@ -23,6 +24,17 @@ public class RabbitTopology {
     @Bean
     public Binding topicBindingTruck(TopicExchange exchange, Queue topicQueueTruck){
         return BindingBuilder.bind(topicQueueTruck).to(exchange).with("truck.appointment.*");
+
+    }
+
+    @Bean
+    public Queue topicQueueTruckFifo(){
+        return new Queue(TOPIC_QUEUE_TRUCK_FIFO,false);
+    }
+
+    @Bean
+    public Binding topicBindingTruckFifo(TopicExchange exchange, Queue topicQueueTruckFifo){
+        return BindingBuilder.bind(topicQueueTruckFifo).to(exchange).with("truck.fifo.*");
 
     }
 }
