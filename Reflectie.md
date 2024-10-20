@@ -1,6 +1,6 @@
-# V1 - Student 2
+# V1 
 ## Pre coaching 30/09/2024
-### Geschatte Progress (in %): %
+### Geschatte Progress (in %): 20%
 ### Status
 _Waar sta je globaal? wat loopt er goed/slecht? hoe verloopt de samenwerking? Wie heeft globaal welke delen uitgewerkt_
 
@@ -11,8 +11,8 @@ zou alles normaal vlotjes moeten verlopen.
 
 Ik heb veel tijd verloren aan persistence gedeelte, maar ik ben blij dat die achter de rug is.
 
-Begin ging nogal wat moeilijk om de opdracht beschrijving te begrijpen.
-S2: ik ben bezig met waterzijde. Was wat moeilijk om uit te zoeken waar ik moest beginnen en zat daar vast maar ben uiteindelijk begonnen met purchaseorder te maken en
+S2: Begin ging nogal wat moeilijk om de opdracht beschrijving te begrijpen.
+ik ben bezig met waterzijde. Was wat moeilijk om uit te zoeken waar ik moest beginnen en zat daar vast maar ben uiteindelijk begonnen met purchaseorder te maken en
 van daaruit zal ik een dokoperatie maken met een schip.
 
 ### Stories
@@ -28,8 +28,31 @@ _eventuele vragen voor je coach_
 ## Post coaching
 ### Feedback
 _(invullen na gesprek)_ 
+Creates moeten in service of services maken als service te groot is.
+Services transactionel maken voor lazy.
+Dto's vormen in create methodes in service.
 
-creates moeten in service. of serives ervoor maken
-service transactionel maken voor lazy.
- dto vormen in create in  service.
+# V2
+## Pre coaching 21/10/2024
+### Geschatte Progress (in %): 70%
+### Status
+_Waar sta je globaal? wat loopt er goed/slecht? hoe verloopt de samenwerking? Wie heeft globaal welke delen uitgewerkt_
 
+Algemeen: samenwerking verloopt goed. Veel progress gemaakt. 
+S1: land volledig uitgewerkt. 
+S2: water volledig uitgewerkt.
+
+### Stories
+_(Enkel voor stories die speciale aandacht vragen)_
+
+### Quality
+_Acties (refactoring,..) die nog geplant staan om de kwaliteit van project te verhogen_
+_(maak hier issues voor aan!)_
+
+automatische fifo trucks verwerken om 20u.
+
+### Vragen
+_eventuele vragen voor je coach_
+
+## Post coaching
+### Feedback
