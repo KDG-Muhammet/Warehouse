@@ -1,6 +1,5 @@
 package be.kdg.sa.warehouse.repository;
 
-import be.kdg.sa.warehouse.domain.Buyer;
 import be.kdg.sa.warehouse.domain.Seller;
 import org.springframework.data.jpa.repository.JpaRepository;
 
