@@ -1,10 +1,9 @@
 package be.kdg.sa.warehouse.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -13,11 +12,15 @@ public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID UUID;
+
+    @Column(unique=true)
     private String name;
     private String address;
 
-    public Seller(UUID UUID, String name, String address) {
-        this.UUID = UUID;
+    @OneToMany
+    private List<Warehouse> warehouses = new ArrayList<>();
+
+    public Seller(String name, String address) {
         this.name = name;
         this.address = address;
     }
@@ -48,5 +51,13 @@ public class Seller {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<Warehouse> getWarehouses() {
+        return warehouses;
+    }
+
+    public void setWarehouses(List<Warehouse> warehouses) {
+        this.warehouses = warehouses;
     }
 }

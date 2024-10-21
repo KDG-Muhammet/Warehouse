@@ -16,7 +16,7 @@ public class GetWarehouseService {
         this.modelMapper = modelMapper;
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<WarehouseDto> findAllWarehouses() {
         return warehouseService.findAllWarehouses().stream().map(a -> modelMapper.map(a, WarehouseDto.class)).toList();
     }

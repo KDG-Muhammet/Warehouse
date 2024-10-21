@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
+import java.util.Optional;
+
 @Service
 public class CreatePurchaseOrderService {
 
@@ -22,7 +24,7 @@ public class CreatePurchaseOrderService {
     private final SellerService sellerService;
     private final MaterialService materialService;
     private final PurchaseOrderService purchaseOrderService;
-    private static final Logger logger = LoggerFactory.getLogger(PurchaseOrderService.class);
+    private static final Logger logger = LoggerFactory.getLogger(CreatePurchaseOrderService.class);
 
     public CreatePurchaseOrderService(BuyerService buyerService, SellerService sellerService, MaterialService materialService, PurchaseOrderService purchaseOrderService) {
         this.buyerService = buyerService;

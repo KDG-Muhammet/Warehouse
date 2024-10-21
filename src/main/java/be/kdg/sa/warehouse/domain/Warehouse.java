@@ -11,18 +11,22 @@ public class Warehouse {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @OneToOne
+    @ManyToOne
     private Material material;
 
     private BigDecimal capacity;
     private BigDecimal occupancy;
 
+    @ManyToOne
+    private Seller seller;
+
     protected Warehouse() {}
 
-    public Warehouse(Material material, BigDecimal capacity, BigDecimal occupancy) {
+    public Warehouse(Material material, BigDecimal capacity, BigDecimal occupancy, Seller seller) {
         this.material = material;
         this.capacity = capacity;
         this.occupancy = occupancy;
+        this.seller = seller;
     }
 
     public UUID getId() {
@@ -49,5 +53,9 @@ public class Warehouse {
 
     public void setOccupancy(BigDecimal occupancy) {
         this.occupancy = occupancy;
+    }
+
+    public Seller getSellerName() {
+        return seller;
     }
 }

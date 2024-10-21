@@ -6,15 +6,19 @@ import java.time.LocalDateTime;
 
 public class SenderPdtDto implements Serializable {
     private LocalDateTime deliveryTime;
-    private String warehouse;
+    private String materialType;
     private BigDecimal materialWeight;
+    private String sellerName;
+    private String sellerAddress;
 
     public SenderPdtDto() {}
 
-    public SenderPdtDto(LocalDateTime deliveryTime, String warehouse, BigDecimal materialWeight) {
+    public SenderPdtDto(LocalDateTime deliveryTime, String materialType, BigDecimal materialWeight, String sellerName, String sellerAddress) {
         this.deliveryTime = deliveryTime;
-        this.warehouse = warehouse;
+        this.materialType = materialType;
         this.materialWeight = materialWeight;
+        this.sellerName = sellerName;
+        this.sellerAddress = sellerAddress;
     }
 
     public LocalDateTime getDeliveryTime() {
@@ -25,12 +29,12 @@ public class SenderPdtDto implements Serializable {
         this.deliveryTime = deliveryTime;
     }
 
-    public String getWarehouse() {
-        return warehouse;
+    public String getMaterialType() {
+        return materialType;
     }
 
-    public void setWarehouse(String warehouse) {
-        this.warehouse = warehouse;
+    public void setMaterialType(String materialType) {
+        this.materialType = materialType;
     }
 
     public BigDecimal getMaterialWeight() {
@@ -39,5 +43,21 @@ public class SenderPdtDto implements Serializable {
 
     public void setMaterialWeight(BigDecimal materialWeight) {
         this.materialWeight = materialWeight;
+    }
+
+    public String getSellerName() {
+        return sellerName;
+    }
+
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
+    }
+
+    public String getSellerAddress() {
+        return sellerAddress;
+    }
+
+    public void setSellerAddress(String sellerAddress) {
+        this.sellerAddress = sellerAddress;
     }
 }
