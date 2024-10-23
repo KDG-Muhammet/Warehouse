@@ -9,7 +9,7 @@ POST http://localhost:8081/api/purchaseOrders
 Content-Type: application/json
 
 {
-  "poNumber": "PO12345",
+  "poNumber": "testpoNumber",
   "buyerName": "buyer",
   "buyerAddress": "test address buyer",
   "sellerName": "seller",
@@ -26,5 +26,5 @@ Content-Type: application/json
       "materialName": "IJZERERTS"
     }
   ],
-  "vesselNumber": "VN98768"
+  "vesselNumber": "test_vessel_number"
 }

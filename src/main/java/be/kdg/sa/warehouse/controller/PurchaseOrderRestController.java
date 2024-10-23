@@ -36,10 +36,8 @@ public class PurchaseOrderRestController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public PurchaseOrder addPurchaseOrder(@RequestBody @Valid PurchaseOrderDto purchaseOrderDto){
-        return createPurchaseOrderService.createPurchaseOrder(purchaseOrderDto);
-
-
+    public void addPurchaseOrder(@RequestBody @Valid PurchaseOrderDto purchaseOrderDto){
+         createPurchaseOrderService.createPurchaseOrder(purchaseOrderDto);
     }
 
 

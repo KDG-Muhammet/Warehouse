@@ -29,6 +29,7 @@ public class PurchaseOrder {
     @OneToMany(mappedBy = "purchaseOrder", cascade = CascadeType.ALL)
     private List<OrderLine> orderLines  = new ArrayList<>();
 
+    @Enumerated(EnumType.STRING)
     private Status status;
 
 
