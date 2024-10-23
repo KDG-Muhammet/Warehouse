@@ -1,4 +1,4 @@
-package be.kdg.sa.warehouse.controller;
+package be.kdg.sa.warehouse.controller.api;
 
 
 import be.kdg.sa.warehouse.controller.dto.po.PurchaseOrderDto;

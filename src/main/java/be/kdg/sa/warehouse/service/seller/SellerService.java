@@ -1,4 +1,4 @@
-package be.kdg.sa.warehouse.service;
+package be.kdg.sa.warehouse.service.seller;
 
 import be.kdg.sa.warehouse.domain.Seller;
 import be.kdg.sa.warehouse.repository.SellerRepository;

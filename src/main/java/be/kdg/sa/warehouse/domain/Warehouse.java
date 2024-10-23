@@ -3,6 +3,8 @@ package be.kdg.sa.warehouse.domain;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -19,6 +21,9 @@ public class Warehouse {
 
     @ManyToOne
     private Seller seller;
+
+    @OneToMany
+    private List<Delivery> deliveries = new ArrayList<>();
 
     protected Warehouse() {}
 
@@ -58,4 +63,9 @@ public class Warehouse {
     public Seller getSellerName() {
         return seller;
     }
+
+    public List<Delivery> getDeliveries() {
+        return deliveries;
+    }
+
 }
