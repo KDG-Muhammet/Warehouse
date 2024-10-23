@@ -8,7 +8,7 @@ import be.kdg.sa.warehouse.domain.enums.Status;
 import be.kdg.sa.warehouse.domain.po.OrderLine;
 import be.kdg.sa.warehouse.domain.po.PurchaseOrder;
 import be.kdg.sa.warehouse.service.BuyerService;
-import be.kdg.sa.warehouse.service.SellerService;
+import be.kdg.sa.warehouse.service.seller.SellerService;
 import be.kdg.sa.warehouse.service.material.MaterialService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

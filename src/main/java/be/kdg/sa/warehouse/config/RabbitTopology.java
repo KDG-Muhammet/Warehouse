@@ -6,35 +6,48 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitTopology {
-    public static final String TOPIC_EXCHANGE = "truck-exchange";
-    public static final String TOPIC_QUEUE_TRUCK = "truck-appointment-queue";
-    public static final String TOPIC_QUEUE_TRUCK_FIFO = "truck-fifo-queue";
+    public static final String DIRECT_EXCHANGE = "land-exchange";
+    public static final String DIRECT_QUEUE_DELIVERY = "delivery-queue";
+    public static final String DIRECT_QUEUE_MATERIAL = "material-queue";
+    public static final String DIRECT_QUEUE_SELLER = "seller-queue";
 
     @Bean
-    TopicExchange topicExchange(){
-        return new TopicExchange(TOPIC_EXCHANGE);
+    DirectExchange directExchange(){
+        return new DirectExchange(DIRECT_EXCHANGE);
     }
 
     @Bean
-    public Queue topicQueueTruck(){
-        return new Queue(TOPIC_QUEUE_TRUCK,false);
+    public Queue directQueueDelivery(){
+        return new Queue(DIRECT_QUEUE_DELIVERY,false);
     }
 
 
     @Bean
-    public Binding topicBindingTruck(TopicExchange exchange, Queue topicQueueTruck){
-        return BindingBuilder.bind(topicQueueTruck).to(exchange).with("truck.appointment.*");
+    public Binding directBindingDelivery(DirectExchange exchange, Queue directQueueDelivery){
+        return BindingBuilder.bind(directQueueDelivery).to(exchange).with("delivery.queue");
 
     }
 
     @Bean
-    public Queue topicQueueTruckFifo(){
-        return new Queue(TOPIC_QUEUE_TRUCK_FIFO,false);
+    public Queue directQueueMaterial(){
+        return new Queue(DIRECT_QUEUE_MATERIAL,false);
     }
 
     @Bean
-    public Binding topicBindingTruckFifo(TopicExchange exchange, Queue topicQueueTruckFifo){
-        return BindingBuilder.bind(topicQueueTruckFifo).to(exchange).with("truck.fifo.*");
+    public Binding directBindingMaterial(DirectExchange exchange, Queue directQueueMaterial){
+        return BindingBuilder.bind(directQueueMaterial).to(exchange).with("material.queue");
+
+    }
+
+    @Bean
+    public Queue directQueueSeller(){
+        return new Queue(DIRECT_QUEUE_SELLER,false);
+    }
+
+
+    @Bean
+    public Binding directBindingsELLER(DirectExchange exchange, Queue directQueueSeller){
+        return BindingBuilder.bind(directQueueSeller).to(exchange).with("seller.queue");
 
     }
 }
