@@ -17,16 +17,4 @@ public class TruckHandler {
     public TruckHandler(UpdateWarehouseService updateWarehouseService) {
         this.updateWarehouseService = updateWarehouseService;
     }
-
-    @RabbitListener(queues = RabbitTopology.DIRECT_QUEUE_DELIVERY)
-    public void handleSenderPdtDto(SenderPdtDto senderPdtDto) {
-        logger.info("   Load for {} -> Amount = {}", senderPdtDto.getMaterialType(), senderPdtDto.getMaterialWeight());
-        updateWarehouseService.updateWarehouseWithDelivery(senderPdtDto);
-    }
-
-    @RabbitListener(queues = RabbitTopology.DIRECT_QUEUE_MATERIAL)
-    public void handleSenderPdtDtoFifo(SenderPdtDto senderPdtDto) {
-        logger.info("   FIFO Load for {} -> Amount = {}", senderPdtDto.getMaterialType(), senderPdtDto.getMaterialWeight());
-        updateWarehouseService.updateWarehouseWithDelivery(senderPdtDto);
-    }
 }

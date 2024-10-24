@@ -1,19 +1,23 @@
 package be.kdg.sa.warehouse.controller.dto;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class DeliveryDto {
+    private UUID uuid;
     private LocalDateTime deliveryTime;
     private String materialType;
     private UUID warehouseId;
+    private BigDecimal amount;
 
-    public DeliveryDto() {}
 
-    public DeliveryDto(LocalDateTime deliveryTime, String materialType, UUID warehouseId) {
-        this.deliveryTime = deliveryTime;
-        this.materialType = materialType;
-        this.warehouseId = warehouseId;
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     public LocalDateTime getDeliveryTime() {
@@ -38,5 +42,13 @@ public class DeliveryDto {
 
     public void setWarehouseId(UUID warehouseId) {
         this.warehouseId = warehouseId;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 }

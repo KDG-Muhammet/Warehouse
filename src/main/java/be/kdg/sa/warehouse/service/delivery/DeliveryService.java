@@ -7,6 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 public class DeliveryService {
     private final DeliveryRepository deliveryRepository;
@@ -15,6 +19,14 @@ public class DeliveryService {
     public DeliveryService(DeliveryRepository deliveryRepository) {
         this.deliveryRepository = deliveryRepository;
     }
+
+
+    @Transactional(readOnly = true)
+    public Delivery findDeliveryByDeliveryDate(LocalDateTime deliveryDate) {
+        logger.info("   Finding delivery from {}", deliveryDate);
+        return deliveryRepository.findDeliveryByDeliveryDate(deliveryDate);
+    }
+
 
     @Transactional
     public void createDelivery(Delivery delivery) {
