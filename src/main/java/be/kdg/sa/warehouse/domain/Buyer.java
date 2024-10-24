@@ -13,8 +13,7 @@ public class Buyer {
     private String name;
     private String address;
 
-    public Buyer(UUID id, String name, String address) {
-        this.UUID = id;
+    public Buyer(String name, String address) {
         this.name = name;
         this.address = address;
     }

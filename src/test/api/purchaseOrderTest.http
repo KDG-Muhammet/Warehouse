@@ -1,5 +1,5 @@
 ###GET PurchaseOrder with poNumber
-GET localhost:8081/api/purchaseOrders/PO12345
+GET localhost:8081/api/purchaseOrders/testpoNumber
 
 ###GET all PurchaseOrders
 GET localhost:8081/api/purchaseOrders
@@ -25,6 +25,5 @@ Content-Type: application/json
       "amount": 5,
       "materialName": "IJZERERTS"
     }
-  ],
-  "vesselNumber": "test_vessel_number"
+  ]
 }

@@ -19,8 +19,6 @@ public class PurchaseOrder {
 
     private String poNumber;
     private Date purchaseDate;
-    private String vesselNumber;
-
     @ManyToOne
     private Seller seller;
     @ManyToOne
@@ -33,10 +31,9 @@ public class PurchaseOrder {
     private Status status;
 
 
-    public PurchaseOrder(String poNumber, Date purchaseDate, String vesselNumber, Seller seller, Buyer buyer, List<OrderLine> orderLines) {
+    public PurchaseOrder(String poNumber, Date purchaseDate, Seller seller, Buyer buyer, List<OrderLine> orderLines) {
         this.poNumber = poNumber;
         this.purchaseDate = purchaseDate;
-        this.vesselNumber = vesselNumber;
         this.seller = seller;
         this.buyer = buyer;
         this.orderLines = orderLines;
@@ -68,14 +65,6 @@ public class PurchaseOrder {
 
     public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
-    }
-
-    public String getVesselNumber() {
-        return vesselNumber;
-    }
-
-    public void setVesselNumber(String vesselNumber) {
-        this.vesselNumber = vesselNumber;
     }
 
     public Buyer getBuyer() {

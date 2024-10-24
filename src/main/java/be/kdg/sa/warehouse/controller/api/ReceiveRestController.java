@@ -17,11 +17,16 @@ public class ReceiveRestController {
         this.purchaseOrderService = purchaseOrderService;
     }
 
-    @PostMapping("")
+    @PostMapping("/purchaseOrder")
     public void receivePurchaseOrder(@RequestBody PurchaseOrderDto purchaseOrderDto) {
-        logger.info("Receiving PurchaseOrderDto: " + purchaseOrderDto.getVesselNumber());
+        logger.info("Receiving PurchaseOrder: " + purchaseOrderDto.getPoNumber());
         purchaseOrderService.updateOrder(purchaseOrderDto);
+    }
 
+    @PostMapping("/shippingOrder")
+    public void receiveShippingOrder(@RequestBody PurchaseOrderDto purchaseOrderDto) {
+        logger.info("Receiving ShippingOrder with poNumber: " + purchaseOrderDto.getPoNumber());
+        purchaseOrderService.expectingOrder(purchaseOrderDto);
     }
 
 }

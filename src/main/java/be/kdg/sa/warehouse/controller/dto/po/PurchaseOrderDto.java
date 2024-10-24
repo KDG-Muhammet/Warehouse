@@ -15,10 +15,7 @@ public class PurchaseOrderDto {
     private String sellerAddress;
     private Date date;
     private List<OrderLineDto> orderLines;
-    private String vesselNumber;
     private Status status;
-
-    // Constructors
 
     public PurchaseOrderDto(PurchaseOrder purchaseOrder) {
         this.poNumber = purchaseOrder.getPoNumber();
@@ -27,7 +24,6 @@ public class PurchaseOrderDto {
         this.sellerName = purchaseOrder.getSeller().getName();
         this.sellerAddress = purchaseOrder.getSeller().getAddress();
         this.date = purchaseOrder.getPurchaseDate();
-        this.vesselNumber = purchaseOrder.getVesselNumber();
         this.status = purchaseOrder.getStatus();
     }
 
@@ -82,13 +78,6 @@ public class PurchaseOrderDto {
         this.orderLines = orderLines;
     }
 
-    public String getVesselNumber() {
-        return vesselNumber;
-    }
-
-    public void setVesselNumber(String vesselNumber) {
-        this.vesselNumber = vesselNumber;
-    }
 
     public String getSellerAddress() {
         return sellerAddress;

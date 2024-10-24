@@ -7,7 +7,5 @@ import java.util.UUID;
 
 public interface PurchaseOrderRepository extends JpaRepository<PurchaseOrder, UUID> {
     PurchaseOrder findPurchaseOrderByPoNumber(String poNumber);
-    PurchaseOrder findPurchaseOrderByPoNumberAndVesselNumber(String poNumber, String vesselNumber);
-
 
 }
