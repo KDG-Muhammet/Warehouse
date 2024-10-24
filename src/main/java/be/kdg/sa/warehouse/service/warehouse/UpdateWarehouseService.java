@@ -1,6 +1,6 @@
 package be.kdg.sa.warehouse.service.warehouse;
 
-import be.kdg.sa.warehouse.controller.dto.rmq.SenderPdtDto;
+import be.kdg.sa.warehouse.controller.dto.DeliveryDto;
 import be.kdg.sa.warehouse.domain.Warehouse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,20 +11,20 @@ import java.math.BigDecimal;
 
 @Service
 public class UpdateWarehouseService {
-    private final CreateWarehouseService createWarehouseService;
+    private final WarehouseService warehouseService;
     private final Logger logger = LoggerFactory.getLogger(UpdateWarehouseService.class);
 
 
-    public UpdateWarehouseService(CreateWarehouseService createWarehouseService) {
-        this.createWarehouseService = createWarehouseService;
+    public UpdateWarehouseService(WarehouseService warehouseService) {
+        this.warehouseService = warehouseService;
     }
 
     @Transactional
-    public void updateWarehouseWithDelivery(SenderPdtDto senderPdtDto) {
-        Warehouse warehouse = createWarehouseService.createOrUpdateWarehouse(senderPdtDto);
-        BigDecimal newWeight = warehouse.getOccupancy().add(senderPdtDto.getMaterialWeight());
+    public void updateWarehouseWithDelivery(DeliveryDto deliveryDto) {
+        Warehouse warehouse = warehouseService.findWarehouseById(deliveryDto.getWarehouseId());
+        BigDecimal newWeight = warehouse.getOccupancy().add(deliveryDto.getAmount());
         warehouse.setOccupancy(newWeight);
 
-        logger.info("   Warehouse {} updated. Occupancy = {}", senderPdtDto.getMaterialType(), warehouse.getOccupancy());
+        logger.info("   Warehouse {} updated. Occupancy = {}", warehouse.getMaterial().getType(), warehouse.getOccupancy());
     }
 }

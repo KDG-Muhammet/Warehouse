@@ -1,8 +1,10 @@
 package be.kdg.sa.warehouse.domain;
 
+import be.kdg.sa.warehouse.controller.dto.DeliveryDto;
 import be.kdg.sa.warehouse.domain.enums.MaterialType;
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -12,12 +14,15 @@ public class Delivery {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uuid;
 
+    @Enumerated(EnumType.STRING)
     private MaterialType materialType;
 
     private LocalDateTime deliveryDate;
 
     @ManyToOne
     private Warehouse warehouse;
+
+    private BigDecimal amount;
 
     public Delivery(MaterialType materialType, LocalDateTime deliveryDate, Warehouse warehouse) {
         this.materialType = materialType;
@@ -28,6 +33,7 @@ public class Delivery {
     protected Delivery() {
 
     }
+
 
     public MaterialType getMaterialType() {
         return materialType;
@@ -51,5 +57,13 @@ public class Delivery {
 
     public void setWarehouse(Warehouse warehouse) {
         this.warehouse = warehouse;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 }

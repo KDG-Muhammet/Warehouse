@@ -23,7 +23,9 @@ public class CreateDeliveryService {
     @Transactional
     public void deliveryForWarehouse(DeliveryDto deliveryDto) {
         Warehouse warehouse = warehouseService.findWarehouseById(deliveryDto.getWarehouseId());
-        deliveryService.createDelivery(new Delivery(warehouse.getMaterial().getType(), deliveryDto.getDeliveryTime(), warehouse));
+        Delivery delivery = new Delivery(warehouse.getMaterial().getType(), deliveryDto.getDeliveryTime(), warehouse);
+
+        deliveryService.createDelivery(delivery);
         sendPDTService.sendPDT(deliveryDto);
     }
 }
