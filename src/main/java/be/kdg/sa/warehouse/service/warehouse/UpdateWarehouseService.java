@@ -6,6 +6,7 @@ import be.kdg.sa.warehouse.domain.po.OrderLine;
 import be.kdg.sa.warehouse.domain.po.PurchaseOrder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,9 @@ import java.util.Optional;
 public class UpdateWarehouseService {
     private final WarehouseService warehouseService;
     private final Logger logger = LoggerFactory.getLogger(UpdateWarehouseService.class);
+
+    @Value("${convertToTon}")
+    private long convertToTon;
 
 
     public UpdateWarehouseService(WarehouseService warehouseService) {
@@ -36,10 +40,10 @@ public class UpdateWarehouseService {
         for (OrderLine orderLine : purchaseOrder.getOrderLines()) {
             Optional<Warehouse> warehouseOptional = warehouseService.findWarehouseBySellerUUIDAndMaterial_Id(purchaseOrder.getSeller().getUUID(), orderLine.getMaterial().getId());
             Warehouse warehouse = warehouseOptional.get();
-            int amount = orderLine.getAmount();
+            BigDecimal amountInTon = BigDecimal.valueOf(orderLine.getAmount() * convertToTon);
             BigDecimal availableStock = warehouse.getOccupancy();
-            warehouse.setOccupancy(availableStock.subtract(BigDecimal.valueOf(amount)));
-            logger.info("lower warehouse Occupancy by  : {} ", amount);
+            warehouse.setOccupancy(availableStock.subtract(amountInTon));
+            logger.info(    "lower warehouse Occupancy by  : {} ", amountInTon);
         }
     }
 }

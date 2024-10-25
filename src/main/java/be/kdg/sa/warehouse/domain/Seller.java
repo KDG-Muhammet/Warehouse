@@ -13,12 +13,15 @@ public class Seller {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID UUID;
 
-    @Column(unique=true)
+    @Column(unique = true)
     private String name;
     private String address;
 
     @OneToMany
     private List<Warehouse> warehouses = new ArrayList<>();
+
+    @OneToOne
+    private Invoice invoice;
 
     public Seller(String name, String address) {
         this.name = name;

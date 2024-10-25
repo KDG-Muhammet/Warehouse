@@ -1,10 +1,8 @@
 package be.kdg.sa.warehouse.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
@@ -13,4 +11,32 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uuid;
 
+    @OneToOne
+    private Seller seller;
+
+    private BigDecimal totalCommisionCost;
+
+    public Invoice(Seller seller) {
+        this.seller = seller;
+    }
+
+    protected Invoice() {
+
+    }
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
+
+    public BigDecimal getTotalCommisionCost() {
+        return totalCommisionCost;
+    }
+
+    public void setTotalCommisionCost(BigDecimal totalCommisionCost) {
+        this.totalCommisionCost = totalCommisionCost;
+    }
 }
