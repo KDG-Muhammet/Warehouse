@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class MaterialHandler {
     private final UpdateDeliveryService updateDeliveryService;
     private final UpdateWarehouseService updateWarehouseService;
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(MaterialHandler.class);
 
     public MaterialHandler(UpdateDeliveryService updateDeliveryService, UpdateWarehouseService updateWarehouseService) {
         this.updateDeliveryService = updateDeliveryService;

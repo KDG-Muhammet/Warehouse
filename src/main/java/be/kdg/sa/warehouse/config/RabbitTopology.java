@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitTopology {
     public static final String DIRECT_EXCHANGE = "land-exchange";
     public static final String DIRECT_QUEUE_DELIVERY = "delivery-queue";
+    public static final String DIRECT_QUEUE_FIFO_DELIVERY = "fifo-delivery-queue";
     public static final String DIRECT_QUEUE_MATERIAL = "material-queue";
     public static final String DIRECT_QUEUE_SELLER = "seller-queue";
 
@@ -46,8 +47,20 @@ public class RabbitTopology {
 
 
     @Bean
-    public Binding directBindingsELLER(DirectExchange exchange, Queue directQueueSeller){
+    public Binding directBindingSeller(DirectExchange exchange, Queue directQueueSeller){
         return BindingBuilder.bind(directQueueSeller).to(exchange).with("seller.queue");
+
+    }
+
+    @Bean
+    public Queue directQueueFifo(){
+        return new Queue(DIRECT_QUEUE_FIFO_DELIVERY,false);
+    }
+
+
+    @Bean
+    public Binding directBindingsFifo(DirectExchange exchange, Queue directQueueFifo){
+        return BindingBuilder.bind(directQueueFifo).to(exchange).with("fifo.queue");
 
     }
 }

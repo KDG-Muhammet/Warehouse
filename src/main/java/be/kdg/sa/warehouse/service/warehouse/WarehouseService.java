@@ -1,16 +1,12 @@
 package be.kdg.sa.warehouse.service.warehouse;
 
-import be.kdg.sa.warehouse.domain.Material;
-import be.kdg.sa.warehouse.domain.Seller;
 import be.kdg.sa.warehouse.domain.Warehouse;
-import be.kdg.sa.warehouse.domain.enums.MaterialType;
 import be.kdg.sa.warehouse.repository.WarehouseRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.UUID;
@@ -38,14 +34,14 @@ public class WarehouseService {
 
     @Transactional(readOnly = true)
     public Optional<Warehouse> findWarehouseBySellerUUIDAndMaterial_Id(UUID sellerUUID, UUID materialUUID) {
-        logger.info("   Finding warehouse by seller and Material");
+        logger.info("   Finding warehouse by seller {} and Material {}", sellerUUID, materialUUID);
         return warehouseRepository.findWarehouseBySellerUUIDAndMaterial_Id(sellerUUID, materialUUID);
     }
 
     @Transactional
-    public Warehouse createWarehouse(Warehouse warehouse) {
+    public void createWarehouse(Warehouse warehouse) {
         logger.info("   Creating warehouse: {}", warehouse.getMaterial());
-        return warehouseRepository.save(warehouse);
+        warehouseRepository.save(warehouse);
     }
 
 }

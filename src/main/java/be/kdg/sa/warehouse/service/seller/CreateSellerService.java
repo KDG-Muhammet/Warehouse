@@ -6,6 +6,8 @@ import be.kdg.sa.warehouse.service.warehouse.CreateWarehouseService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 public class CreateSellerService {
     private final SellerService sellerService;
@@ -17,9 +19,15 @@ public class CreateSellerService {
     }
 
     @Transactional
-    public void createSellerWithWarehouses(SellerDto sellerDto) {
-        Seller seller = sellerService.createSeller(new Seller(sellerDto.getSellerName(), sellerDto.getSellerAddress()));
-        createWarehouseService.createWarehousesForNewSeller(seller);
+    public Seller createSellerWithWarehouses(SellerDto sellerDto) {
+        Optional<Seller> optionalSeller = sellerService.findSellerByName(sellerDto.getSellerName());
+
+        if (optionalSeller.isEmpty()) {
+            Seller seller = sellerService.createSeller(new Seller(sellerDto.getSellerName(), sellerDto.getSellerAddress()));
+            createWarehouseService.createWarehousesForNewSeller(seller);
+            return seller;
+        }
+        return optionalSeller.get();
     }
 }
 
