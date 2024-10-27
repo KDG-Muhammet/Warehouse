@@ -17,12 +17,12 @@ Content-Type: application/json
   "date": "2024-09-29T00:00:00",
   "orderLines": [
     {
-      "amount": 10,
+      "amount": 50,
       "materialName": "GIPS"
 
     },
     {
-      "amount": 5,
+      "amount": 100,
       "materialName": "IJZERERTS"
     }
   ]
