@@ -22,7 +22,7 @@ public class Warehouse {
     @ManyToOne
     private Seller seller;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Delivery> deliveries = new ArrayList<>();
 
     protected Warehouse() {}

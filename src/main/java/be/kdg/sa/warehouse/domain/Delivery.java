@@ -1,6 +1,5 @@
 package be.kdg.sa.warehouse.domain;
 
-import be.kdg.sa.warehouse.controller.dto.DeliveryDto;
 import be.kdg.sa.warehouse.domain.enums.MaterialType;
 import jakarta.persistence.*;
 
@@ -23,6 +22,12 @@ public class Delivery {
     private Warehouse warehouse;
 
     private BigDecimal amount;
+
+    private BigDecimal costPrice;
+
+    private int days;
+
+    private BigDecimal storagePrice;
 
     public Delivery(MaterialType materialType, LocalDateTime deliveryDate, Warehouse warehouse) {
         this.materialType = materialType;
@@ -65,5 +70,29 @@ public class Delivery {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    public BigDecimal getCostPrice() {
+        return costPrice;
+    }
+
+    public void setCostPrice(BigDecimal costPrice) {
+        this.costPrice = costPrice;
+    }
+
+    public int getDays() {
+        return days;
+    }
+
+    public void setDays(int days) {
+        this.days = days;
+    }
+
+    public BigDecimal getStoragePrice() {
+        return storagePrice;
+    }
+
+    public void setStoragePrice(BigDecimal storagePrice) {
+        this.storagePrice = storagePrice;
     }
 }

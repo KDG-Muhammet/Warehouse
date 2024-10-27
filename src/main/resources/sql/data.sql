@@ -42,7 +42,8 @@ values (gen_random_uuid(), 'test address seller', 'seller');
 insert into invoice(uuid, total_commision_cost, seller_uuid)
 values (gen_random_uuid(), 0, (SELECT uuid FROM seller WHERE name = 'seller'));
 
-update seller set invoice_uuid = ((SELECT uuid FROM invoice WHERE name = 'seller'));
+update seller
+set invoice_uuid = ((SELECT uuid FROM invoice WHERE name = 'seller'));
 
 update seller
 set invoice_uuid = ((SELECT uuid FROM invoice WHERE name = 'seller'))
@@ -88,3 +89,56 @@ VALUES (gen_random_uuid(),
         100000,
         (SELECT uuid FROM seller WHERE name = 'seller'));
 
+INSERT INTO delivery(amount, cost_price, days, storage_price, delivery_date, uuid, warehouse_id, material_type)
+VALUES (3000,
+        50,
+        4,
+        5.00,
+        '2024-07-27 10:00:00',
+        gen_random_uuid(),
+        (SELECT id
+         FROM warehouse
+         WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller')
+           AND material_id = (SELECT id FROM material WHERE type = 'GIPS')), 'GIPS');
+
+INSERT INTO delivery(amount, cost_price, days, storage_price, delivery_date, uuid, warehouse_id, material_type)
+VALUES (100000,
+        50,
+        4,
+        5.00,
+        '2024-07-27 9:00:00',
+        gen_random_uuid(),
+        (SELECT id
+         FROM warehouse
+         WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller')
+           AND material_id = (SELECT id FROM material WHERE type = 'GIPS')), 'GIPS');
+
+INSERT INTO delivery(amount, cost_price, days, storage_price, delivery_date, uuid, warehouse_id, material_type)
+VALUES (100000,
+        50,
+        4,
+        1.00,
+        '2024-07-27 09:00:00',
+        gen_random_uuid(),
+        (SELECT id
+         FROM warehouse
+         WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller')
+           AND material_id = (SELECT id FROM material WHERE type = 'IJZERERTS')), 'IJZERERTS');
+
+INSERT INTO warehouse_deliveries (deliveries_uuid, warehouse_id)
+VALUES (
+           (SELECT uuid FROM delivery WHERE delivery_date = '2024-07-27 10:00:00' AND material_type = 'GIPS'),
+           (SELECT id FROM warehouse WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller') AND material_id = (SELECT id FROM material WHERE type = 'GIPS'))
+       );
+INSERT INTO warehouse_deliveries (deliveries_uuid, warehouse_id)
+VALUES (
+           (SELECT uuid FROM delivery WHERE delivery_date = '2024-07-27 09:00:00' AND material_type = 'GIPS'),
+           (SELECT id FROM warehouse WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller') AND material_id = (SELECT id FROM material WHERE type = 'GIPS'))
+       );
+
+
+INSERT INTO warehouse_deliveries (deliveries_uuid, warehouse_id)
+VALUES (
+           (SELECT uuid FROM delivery WHERE delivery_date = '2024-07-27 09:00:00' AND material_type = 'IJZERERTS'),
+           (SELECT id FROM warehouse WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller') AND material_id = (SELECT id FROM material WHERE type = 'IJZERERTS'))
+       );
