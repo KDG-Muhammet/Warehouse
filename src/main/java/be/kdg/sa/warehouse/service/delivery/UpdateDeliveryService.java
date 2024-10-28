@@ -4,6 +4,7 @@ import be.kdg.sa.warehouse.controller.dto.DeliveryDto;
 import be.kdg.sa.warehouse.domain.Delivery;
 import be.kdg.sa.warehouse.domain.Material;
 import be.kdg.sa.warehouse.service.material.MaterialService;
+import be.kdg.sa.warehouse.service.po.UpdatePurchaseOrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -19,11 +20,14 @@ import static be.kdg.sa.warehouse.util.Calculation.calculateStoragePricePerDeliv
 public class UpdateDeliveryService {
     private final DeliveryService deliveryService;
     private final MaterialService materialService;
+    private final UpdatePurchaseOrderService updatePurchaseOrderService;
+
     private final Logger logger = LoggerFactory.getLogger(UpdateDeliveryService.class);
 
-    public UpdateDeliveryService(DeliveryService deliveryService, MaterialService materialService) {
+    public UpdateDeliveryService(DeliveryService deliveryService, MaterialService materialService, UpdatePurchaseOrderService updatePurchaseOrderService) {
         this.deliveryService = deliveryService;
         this.materialService = materialService;
+        this.updatePurchaseOrderService = updatePurchaseOrderService;
     }
 
     @Transactional
@@ -39,6 +43,8 @@ public class UpdateDeliveryService {
         delivery.setStoragePrice(material.getStoragePrice());
         delivery.setDays(days);
         delivery.setCostPrice(CostPrice);
+        updatePurchaseOrderService.checkPosOnHold();
+
     }
 
 }

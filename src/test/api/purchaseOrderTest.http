@@ -22,7 +22,7 @@ Content-Type: application/json
 
     },
     {
-      "amount": 100,
+      "amount": 1,
       "materialName": "IJZERERTS"
     }
   ]

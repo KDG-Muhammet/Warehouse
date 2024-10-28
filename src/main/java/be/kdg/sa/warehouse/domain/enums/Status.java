@@ -4,6 +4,6 @@ public enum Status {
 
     ONGOING,
     COMPLETED,
-    EXPECTING
-
+    EXPECTING,
+    ON_HOLD
 }

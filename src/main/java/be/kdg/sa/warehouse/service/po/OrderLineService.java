@@ -21,7 +21,7 @@ public class OrderLineService {
 
     }
 
-    public Collection<OrderLine> findOrderLinessbyPurchaseOrderId(UUID referenceUUID) {
+    public Collection<OrderLine> findOrderLinesbyPurchaseOrderId(UUID referenceUUID) {
         return orderLineRepository.getOrderLinesByPurchaseOrderReferenceUUID(referenceUUID);
     }
 }

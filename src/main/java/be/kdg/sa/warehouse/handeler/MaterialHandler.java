@@ -23,7 +23,8 @@ public class MaterialHandler {
     @RabbitListener(queues = RabbitTopology.DIRECT_QUEUE_MATERIAL)
     public void receiveMaterialAmountForDelivery(DeliveryDto deliveryDto) {
         logger.info("   Received material amount {} for warehouse: {}", deliveryDto.getAmount(), deliveryDto.getWarehouseId());
-        updateDeliveryService.updateDeliveryByAmount(deliveryDto);
         updateWarehouseService.updateWarehouseWithDelivery(deliveryDto);
+        updateDeliveryService.updateDeliveryByAmount(deliveryDto);
+
     }
 }

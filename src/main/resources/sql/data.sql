@@ -62,7 +62,7 @@ INSERT INTO warehouse (id, material_id, capacity, occupancy, seller_uuid)
 VALUES (gen_random_uuid(),
         (SELECT id FROM material WHERE type = 'IJZERERTS'),
         500000,
-        100000,
+        999,
         (SELECT uuid FROM seller WHERE name = 'seller'));
 
 -- Cement warehouse
@@ -93,7 +93,7 @@ INSERT INTO delivery(amount, cost_price, days, storage_price, delivery_date, uui
 VALUES (3000,
         50,
         4,
-        5.00,
+        1.00,
         '2024-07-27 10:00:00',
         gen_random_uuid(),
         (SELECT id
@@ -105,7 +105,7 @@ INSERT INTO delivery(amount, cost_price, days, storage_price, delivery_date, uui
 VALUES (100000,
         50,
         4,
-        5.00,
+        1.00,
         '2024-07-27 9:00:00',
         gen_random_uuid(),
         (SELECT id
@@ -114,7 +114,7 @@ VALUES (100000,
            AND material_id = (SELECT id FROM material WHERE type = 'GIPS')), 'GIPS');
 
 INSERT INTO delivery(amount, cost_price, days, storage_price, delivery_date, uuid, warehouse_id, material_type)
-VALUES (100000,
+VALUES (990,
         50,
         4,
         1.00,

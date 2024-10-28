@@ -2,6 +2,7 @@ package be.kdg.sa.warehouse.controller.api;
 
 import be.kdg.sa.warehouse.controller.dto.po.PurchaseOrderDto;
 import be.kdg.sa.warehouse.service.po.PurchaseOrderService;
+import be.kdg.sa.warehouse.service.po.UpdatePurchaseOrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -10,23 +11,24 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/purchaseOrder")
 public class ReceiveRestController {
 
-    private final PurchaseOrderService purchaseOrderService;
+    private final UpdatePurchaseOrderService updatePurchaseOrderService;
     private static final Logger logger = LoggerFactory.getLogger(PurchaseOrderService.class);
 
-    public ReceiveRestController(PurchaseOrderService purchaseOrderService) {
-        this.purchaseOrderService = purchaseOrderService;
+    public ReceiveRestController(UpdatePurchaseOrderService updatePurchaseOrderService) {
+        this.updatePurchaseOrderService = updatePurchaseOrderService;
     }
+
 
     @PostMapping("/purchaseOrder")
     public void receivePurchaseOrder(@RequestBody PurchaseOrderDto purchaseOrderDto) {
         logger.info("Receiving PurchaseOrder: " + purchaseOrderDto.getPoNumber());
-        purchaseOrderService.updateOrder(purchaseOrderDto);
+        updatePurchaseOrderService.updateOrder(purchaseOrderDto);
     }
 
     @PostMapping("/shippingOrder")
     public void receiveShippingOrder(@RequestBody PurchaseOrderDto purchaseOrderDto) {
         logger.info("Receiving ShippingOrder with poNumber: " + purchaseOrderDto.getPoNumber());
-        purchaseOrderService.expectingOrder(purchaseOrderDto);
+        updatePurchaseOrderService.expectingOrder(purchaseOrderDto);
     }
 
 }
