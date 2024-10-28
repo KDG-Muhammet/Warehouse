@@ -117,7 +117,7 @@ INSERT INTO delivery(amount, cost_price, days, storage_price, delivery_date, uui
 VALUES (990,
         50,
         4,
-        1.00,
+        5.00,
         '2024-07-27 09:00:00',
         gen_random_uuid(),
         (SELECT id
@@ -126,19 +126,47 @@ VALUES (990,
            AND material_id = (SELECT id FROM material WHERE type = 'IJZERERTS')), 'IJZERERTS');
 
 INSERT INTO warehouse_deliveries (deliveries_uuid, warehouse_id)
-VALUES (
-           (SELECT uuid FROM delivery WHERE delivery_date = '2024-07-27 10:00:00' AND material_type = 'GIPS'),
-           (SELECT id FROM warehouse WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller') AND material_id = (SELECT id FROM material WHERE type = 'GIPS'))
-       );
+VALUES ((SELECT uuid FROM delivery WHERE delivery_date = '2024-07-27 10:00:00' AND material_type = 'GIPS'),
+        (SELECT id
+         FROM warehouse
+         WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller')
+           AND material_id = (SELECT id FROM material WHERE type = 'GIPS')));
 INSERT INTO warehouse_deliveries (deliveries_uuid, warehouse_id)
-VALUES (
-           (SELECT uuid FROM delivery WHERE delivery_date = '2024-07-27 09:00:00' AND material_type = 'GIPS'),
-           (SELECT id FROM warehouse WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller') AND material_id = (SELECT id FROM material WHERE type = 'GIPS'))
-       );
+VALUES ((SELECT uuid FROM delivery WHERE delivery_date = '2024-07-27 09:00:00' AND material_type = 'GIPS'),
+        (SELECT id
+         FROM warehouse
+         WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller')
+           AND material_id = (SELECT id FROM material WHERE type = 'GIPS')));
 
 
 INSERT INTO warehouse_deliveries (deliveries_uuid, warehouse_id)
-VALUES (
-           (SELECT uuid FROM delivery WHERE delivery_date = '2024-07-27 09:00:00' AND material_type = 'IJZERERTS'),
-           (SELECT id FROM warehouse WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller') AND material_id = (SELECT id FROM material WHERE type = 'IJZERERTS'))
-       );
+VALUES ((SELECT uuid FROM delivery WHERE delivery_date = '2024-07-27 09:00:00' AND material_type = 'IJZERERTS'),
+        (SELECT id
+         FROM warehouse
+         WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller')
+           AND material_id = (SELECT id FROM material WHERE type = 'IJZERERTS')));
+
+INSERT INTO seller_warehouses(seller_uuid, warehouses_id)
+VALUES ((SELECT uuid FROM seller WHERE name = 'seller'),
+        (SELECT id FROM warehouse WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller') AND
+        material_id = (SELECT id FROM material WHERE type = 'GIPS')));
+
+INSERT INTO seller_warehouses(seller_uuid, warehouses_id)
+VALUES ((SELECT uuid FROM seller WHERE name = 'seller'),
+        (SELECT id FROM warehouse WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller') AND
+                material_id = (SELECT id FROM material WHERE type = 'IJZERERTS')));
+
+INSERT INTO seller_warehouses(seller_uuid, warehouses_id)
+VALUES ((SELECT uuid FROM seller WHERE name = 'seller'),
+        (SELECT id FROM warehouse WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller') AND
+                material_id = (SELECT id FROM material WHERE type = 'CEMENT')));
+
+INSERT INTO seller_warehouses(seller_uuid, warehouses_id)
+VALUES ((SELECT uuid FROM seller WHERE name = 'seller'),
+        (SELECT id FROM warehouse WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller') AND
+                material_id = (SELECT id FROM material WHERE type = 'PETCOKE')));
+
+INSERT INTO seller_warehouses(seller_uuid, warehouses_id)
+VALUES ((SELECT uuid FROM seller WHERE name = 'seller'),
+        (SELECT id FROM warehouse WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller') AND
+                material_id = (SELECT id FROM material WHERE type = 'SLAK')));

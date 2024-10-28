@@ -95,4 +95,12 @@ public class Delivery {
     public void setStoragePrice(BigDecimal storagePrice) {
         this.storagePrice = storagePrice;
     }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
 }

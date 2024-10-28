@@ -9,6 +9,9 @@ public class SellerDto {
         this.sellerAddress = sellerAddress;
     }
 
+    public SellerDto() {
+    }
+
     public String getSellerName() {
         return sellerName;
     }

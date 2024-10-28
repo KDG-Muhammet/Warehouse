@@ -1,0 +1,8 @@
+###GET all invoices
+GET localhost:8081/api/invoices
+
+###GET invoice of seller for commission from name
+GET localhost:8081/api/invoices/seller
+
+###PUT calculateStorageCosts manually
+PUT localhost:8081/api/invoices

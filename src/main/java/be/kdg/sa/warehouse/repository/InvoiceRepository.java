@@ -9,6 +9,5 @@ import java.util.UUID;
 public interface InvoiceRepository extends JpaRepository<Invoice, UUID> {
 
     Invoice findInvoiceBySeller(Seller seller);
-
-
+    Invoice findInvoiceBySellerName(String sellerName);
 }

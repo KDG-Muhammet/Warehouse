@@ -3,7 +3,7 @@ package be.kdg.sa.warehouse.service.po;
 import be.kdg.sa.warehouse.controller.dto.po.PurchaseOrderDto;
 import be.kdg.sa.warehouse.domain.enums.Status;
 import be.kdg.sa.warehouse.domain.po.PurchaseOrder;
-import be.kdg.sa.warehouse.service.InvoiceService;
+import be.kdg.sa.warehouse.service.invoice.InvoiceService;
 import be.kdg.sa.warehouse.service.warehouse.UpdateWarehouseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

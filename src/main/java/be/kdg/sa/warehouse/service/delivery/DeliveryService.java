@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class DeliveryService {
@@ -18,6 +19,10 @@ public class DeliveryService {
         this.deliveryRepository = deliveryRepository;
     }
 
+    @Transactional(readOnly = true)
+    public List<Delivery> findAllDeliveries() {
+        return deliveryRepository.findAll();
+    }
 
     @Transactional(readOnly = true)
     public Delivery findDeliveryByDeliveryDate(LocalDateTime deliveryDate) {
@@ -31,4 +36,6 @@ public class DeliveryService {
         logger.info("   {}:{} Delivery {} for {}", delivery.getDeliveryDate().getHour(), delivery.getDeliveryDate().getMinute(), delivery.getMaterialType(), delivery.getWarehouse().getId());
         deliveryRepository.save(delivery);
     }
+
+
 }

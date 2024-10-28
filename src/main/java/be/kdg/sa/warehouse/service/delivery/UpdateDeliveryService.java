@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 import static be.kdg.sa.warehouse.util.Calculation.calculateStoragePricePerDelivery;
 
@@ -37,11 +38,11 @@ public class UpdateDeliveryService {
         delivery.setAmount(new BigDecimal(String.valueOf(deliveryDto.getAmount())));
 
         Material material = materialService.findMaterialByType(String.valueOf(delivery.getMaterialType()));
-        int days = deliveryDto.getDeliveryTime().getDayOfMonth() - LocalDateTime.now().getDayOfMonth() + 1;
-        BigDecimal CostPrice = calculateStoragePricePerDelivery(days, material.getSellingPrice(), delivery.getAmount());
+        long days = ChronoUnit.DAYS.between(LocalDateTime.now().toLocalDate(), deliveryDto.getDeliveryTime().toLocalDate());
+        BigDecimal CostPrice = calculateStoragePricePerDelivery((int) days, material.getSellingPrice(), delivery.getAmount());
 
         delivery.setStoragePrice(material.getStoragePrice());
-        delivery.setDays(days);
+        delivery.setDays((int) days);
         delivery.setCostPrice(CostPrice);
         updatePurchaseOrderService.checkPosOnHold();
 

@@ -1,33 +1,28 @@
-package be.kdg.sa.warehouse.domain;
-
-import jakarta.persistence.*;
+package be.kdg.sa.warehouse.controller.dto;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
-@Entity
-public class Invoice {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID uuid;
-    @OneToOne
-    private Seller seller;
+public class InvoiceDto {
+
+    private SellerDto seller;
     private BigDecimal totalCommisionCost;
     private BigDecimal totalStorageCost;
 
-    public Invoice(Seller seller) {
+    public InvoiceDto(SellerDto seller, BigDecimal totalCommisionCost, BigDecimal totalStorageCost) {
         this.seller = seller;
+        this.totalCommisionCost = totalCommisionCost;
+        this.totalStorageCost = totalStorageCost;
     }
 
-    protected Invoice() {
+    public InvoiceDto() {
 
     }
 
-    public Seller getSeller() {
+    public SellerDto getSeller() {
         return seller;
     }
 
-    public void setSeller(Seller seller) {
+    public void setSeller(SellerDto seller) {
         this.seller = seller;
     }
 
