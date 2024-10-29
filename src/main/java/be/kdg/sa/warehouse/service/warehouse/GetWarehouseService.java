@@ -8,8 +8,12 @@ import be.kdg.sa.warehouse.domain.Warehouse;
 import be.kdg.sa.warehouse.service.material.MaterialService;
 import be.kdg.sa.warehouse.service.seller.CreateSellerService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -20,6 +24,10 @@ public class GetWarehouseService {
     private final MaterialService materialService;
     private final CreateSellerService createSellerService;
     private final ModelMapper modelMapper;
+    @Value("${warehouseCapacity}")
+    private BigDecimal warehouseCapacity;
+    @Value("${percentage}")
+    private BigDecimal percentageValue;
 
     public GetWarehouseService(WarehouseService warehouseService,
                                MaterialService materialService,
@@ -44,5 +52,11 @@ public class GetWarehouseService {
         Optional<Warehouse> warehouseOptional = warehouseService.findWarehouseBySellerUUIDAndMaterial_Id(seller.getUUID(), material.getId());
 
         return warehouseOptional.map(Warehouse::getId).orElse(null);
+    }
+
+    @Transactional(readOnly = true)
+    public BigDecimal findWarehouseOccupancyPercentage(UUID warehouseId) {
+        BigDecimal occupancy = warehouseService.findWarehouseById(warehouseId).getOccupancy();
+        return (occupancy.divide(warehouseCapacity, 7, RoundingMode.HALF_UP)).multiply(percentageValue);
     }
 }

@@ -78,7 +78,7 @@ INSERT INTO warehouse (id, material_id, capacity, occupancy, seller_uuid)
 VALUES (gen_random_uuid(),
         (SELECT id FROM material WHERE type = 'PETCOKE'),
         500000,
-        100000,
+        400000,
         (SELECT uuid FROM seller WHERE name = 'seller'));
 
 -- Slak warehouse

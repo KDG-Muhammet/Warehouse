@@ -16,10 +16,10 @@ public class CreateWarehouseService {
     private final WarehouseService warehouseService;
     private final MaterialService materialService;
 
-    @Value("${spring.application.warehouse.capacity}")
+    @Value("${warehouseCapacity}")
     private BigDecimal capacity;
 
-    @Value("${spring.application.warehouse.opacity}")
+    @Value("${warehouseOccupancy}")
     private BigDecimal opacity;
 
     public CreateWarehouseService(WarehouseService warehouseService, MaterialService materialService) {
