@@ -3,7 +3,7 @@ package be.kdg.sa.warehouse.controller.dto.po;
 import be.kdg.sa.warehouse.domain.po.OrderLine;
 
 public class OrderLineDto {
-    private int amount;
+    private double amount;
     private String materialName;
 
     public OrderLineDto(OrderLine orderLine) {
@@ -12,11 +12,11 @@ public class OrderLineDto {
     }
     public OrderLineDto() {
     }
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

@@ -125,4 +125,7 @@ public class InvoiceService {
         return modelMapper.map(invoice, InvoiceDto.class);
     }
 
+    public void createInvoiceForNewSeller(Seller seller) {
+        invoiceRepository.save(new Invoice(seller));
+    }
 }

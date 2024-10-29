@@ -11,14 +11,14 @@ public class OrderLine {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID orderLineId;
-    private int amount;
+    private double amount;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Material material;
     @ManyToOne
     private PurchaseOrder purchaseOrder;
 
-    public OrderLine(int amount, Material material) {
+    public OrderLine(double amount, Material material) {
         this.amount = amount;
         this.material = material;
 
@@ -31,7 +31,7 @@ public class OrderLine {
         return orderLineId;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
@@ -52,7 +52,7 @@ public class OrderLine {
         this.orderLineId = orderLineId;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
