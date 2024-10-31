@@ -14,8 +14,10 @@ import be.kdg.sa.warehouse.service.material.MaterialService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -47,8 +49,7 @@ public class CreatePurchaseOrderService {
 
         if (totalAmount.compareTo(maxAmountPo) > 0){
             logger.warn("   you are over the amount limit. Your total amount {}:", totalAmount );
-            throw new IllegalArgumentException("you are going over the limit of " + totalAmount);
-
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"you are going over the limit of " + totalAmount);
         } else {
             Buyer buyer = buyerService.findBuyerByNameAndAddress(purchaseOrderDto.getBuyerName(), purchaseOrderDto.getBuyerAddress());
             Seller seller = sellerService.findSellerByNameAndAddress(purchaseOrderDto.getSellerName(), purchaseOrderDto.getSellerAddress());

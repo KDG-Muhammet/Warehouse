@@ -22,6 +22,7 @@ public class PurchaseOrderRestController {
     }
 
     @GetMapping("/{poNumber}")
+    @ResponseStatus(HttpStatus.OK)
     public PurchaseOrderDto getPurchaseOrder(@PathVariable String poNumber) {
         return getPurchaseOrderService.findPurchaseOrderByPoNumber(poNumber);
     }

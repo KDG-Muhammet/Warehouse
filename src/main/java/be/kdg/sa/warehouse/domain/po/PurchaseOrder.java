@@ -17,6 +17,7 @@ public class PurchaseOrder {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID referenceUUID;
 
+    @Column(unique = true)
     private String poNumber;
     private Date purchaseDate;
     @ManyToOne

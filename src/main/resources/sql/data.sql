@@ -170,3 +170,6 @@ INSERT INTO seller_warehouses(seller_uuid, warehouses_id)
 VALUES ((SELECT uuid FROM seller WHERE name = 'seller'),
         (SELECT id FROM warehouse WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller') AND
                 material_id = (SELECT id FROM material WHERE type = 'SLAK')));
+
+INSERT INTO purchase_order(buyer_uuid, referenceuuid, seller_uuid, purchase_date, po_number)
+VALUES ((SELECT uuid FROM buyer WHERE name = 'buyer'),gen_random_uuid(),(SELECT uuid FROM seller WHERE name = 'seller'),'2024-07-27 09:00:00','PO12345')

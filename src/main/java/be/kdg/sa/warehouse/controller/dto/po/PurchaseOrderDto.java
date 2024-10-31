@@ -2,6 +2,7 @@ package be.kdg.sa.warehouse.controller.dto.po;
 
 import be.kdg.sa.warehouse.domain.po.PurchaseOrder;
 import be.kdg.sa.warehouse.domain.enums.Status;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.Date;
 import java.util.List;
@@ -9,6 +10,8 @@ import java.util.List;
 
 public class PurchaseOrderDto {
     private String poNumber;
+
+    @NotBlank(message = "Naam kan niet leeg zijn")
     private String buyerName;
     private String buyerAddress;
     private String sellerName;

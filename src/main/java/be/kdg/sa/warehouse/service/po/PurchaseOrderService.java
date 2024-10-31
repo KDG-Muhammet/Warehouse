@@ -9,7 +9,9 @@ import be.kdg.sa.warehouse.repository.po.PurchaseOrderRepository;
 import be.kdg.sa.warehouse.service.warehouse.WarehouseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 
 import java.math.BigDecimal;
@@ -32,7 +34,11 @@ public class PurchaseOrderService {
     }
 
     public PurchaseOrder findPurchaseOrderByPoNumber(String poNumber) {
-        return purchaseOrderRepository.findPurchaseOrderByPoNumber(poNumber);
+        PurchaseOrder purchaseOrder = purchaseOrderRepository.findPurchaseOrderByPoNumber(poNumber);
+        if (purchaseOrder == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Purchase Order not found");
+        }
+        return purchaseOrder;
     }
 
     public boolean isStockAvailable(PurchaseOrder purchaseOrder) {
