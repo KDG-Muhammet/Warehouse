@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
@@ -84,7 +85,7 @@ public class InvoiceService {
         BigDecimal commissionPercentage = BigDecimal.valueOf(commision); // 1% commissie
         totalPrice = totalPrice.multiply(commissionPercentage);
         logger.info("   calculated commision : {} ", totalPrice);
-        return totalPrice;
+        return totalPrice.setScale(2, RoundingMode.HALF_UP);
     }
 
     @Transactional
