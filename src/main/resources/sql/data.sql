@@ -118,7 +118,7 @@ VALUES (990,
         50,
         4,
         5.00,
-        '2024-07-27 09:00:00',
+        '2024-07-27 09:10:00',
         gen_random_uuid(),
         (SELECT id
          FROM warehouse
@@ -140,7 +140,7 @@ VALUES ((SELECT uuid FROM delivery WHERE delivery_date = '2024-07-27 09:00:00' A
 
 
 INSERT INTO warehouse_deliveries (deliveries_uuid, warehouse_id)
-VALUES ((SELECT uuid FROM delivery WHERE delivery_date = '2024-07-27 09:00:00' AND material_type = 'IJZERERTS'),
+VALUES ((SELECT uuid FROM delivery WHERE delivery_date = '2024-07-27 09:10:00' AND material_type = 'IJZERERTS'),
         (SELECT id
          FROM warehouse
          WHERE seller_uuid = (SELECT uuid FROM seller WHERE name = 'seller')
