@@ -28,4 +28,12 @@ public class InvoiceDto {
         return totalStorageCost;
     }
 
+    public void setTotalCommisionCost(BigDecimal totalCommisionCost) {
+        this.totalCommisionCost = totalCommisionCost;
+    }
+
+    public void setTotalStorageCost(BigDecimal totalStorageCost) {
+        this.totalStorageCost = totalStorageCost;
+    }
+
 }

@@ -39,6 +39,18 @@ public class Material {
         return type;
     }
 
+    public void setType(MaterialType type) {
+        this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public BigDecimal getStoragePrice() {
         return storagePrice;
     }

@@ -19,4 +19,20 @@ public class MaterialDto {
     public void setMaterialType(MaterialType materialType) {
         this.materialType = materialType;
     }
+
+    public BigDecimal getStoragePrice() {
+        return storagePrice;
+    }
+
+    public void setStoragePrice(BigDecimal storagePrice) {
+        this.storagePrice = storagePrice;
+    }
+
+    public BigDecimal getSellingPrice() {
+        return sellingPrice;
+    }
+
+    public void setSellingPrice(BigDecimal sellingPrice) {
+        this.sellingPrice = sellingPrice;
+    }
 }

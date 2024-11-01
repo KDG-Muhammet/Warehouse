@@ -24,7 +24,15 @@ public class WarehouseDto {
         return capacity;
     }
 
+    public void setCapacity(BigDecimal capacity) {
+        this.capacity = capacity;
+    }
+
     public BigDecimal getOccupancy() {
         return occupancy;
+    }
+
+    public void setOccupancy(BigDecimal occupancy) {
+        this.occupancy = occupancy;
     }
 }

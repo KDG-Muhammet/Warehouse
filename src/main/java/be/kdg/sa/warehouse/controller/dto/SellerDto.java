@@ -16,7 +16,15 @@ public class SellerDto {
         return sellerName;
     }
 
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
+    }
+
     public String getSellerAddress() {
         return sellerAddress;
+    }
+
+    public void setSellerAddress(String sellerAddress) {
+        this.sellerAddress = sellerAddress;
     }
 }

@@ -22,8 +22,20 @@ public class Buyer {
 
     }
 
+    public UUID getId() {
+        return UUID;
+    }
+
+    public void setId(UUID UUID) {
+        this.UUID = UUID;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAddress() {

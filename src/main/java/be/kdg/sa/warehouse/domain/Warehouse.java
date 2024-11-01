@@ -43,6 +43,14 @@ public class Warehouse {
         return material;
     }
 
+    public BigDecimal getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(BigDecimal capacity) {
+        this.capacity = capacity;
+    }
+
 
     public BigDecimal getOccupancy() {
         return occupancy;
@@ -58,9 +66,5 @@ public class Warehouse {
 
     public List<Delivery> getDeliveries() {
         return deliveries;
-    }
-
-    public BigDecimal getCapacity() {
-        return capacity;
     }
 }
