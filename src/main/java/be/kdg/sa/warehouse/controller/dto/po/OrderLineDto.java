@@ -12,6 +12,7 @@ public class OrderLineDto {
     }
     public OrderLineDto() {
     }
+
     public double getAmount() {
         return amount;
     }
@@ -22,9 +23,5 @@ public class OrderLineDto {
 
     public String getMaterialName() {
         return materialName;
-    }
-
-    public void setMaterialName(String materialName) {
-        this.materialName = materialName;
     }
 }

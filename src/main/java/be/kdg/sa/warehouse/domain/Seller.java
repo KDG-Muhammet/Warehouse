@@ -60,7 +60,4 @@ public class Seller {
         return warehouses;
     }
 
-    public void setWarehouses(List<Warehouse> warehouses) {
-        this.warehouses = warehouses;
-    }
 }

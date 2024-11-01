@@ -17,6 +17,6 @@ public class BuyerService {
     @Transactional(readOnly = true)
     public Buyer findBuyerByNameAndAddress(String name, String address){
       return buyerRepository.findBuyerByNameAndAddress(name, address);
-    };
+    }
 
 }

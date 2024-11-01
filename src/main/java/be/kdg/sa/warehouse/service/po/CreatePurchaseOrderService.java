@@ -58,7 +58,7 @@ public class CreatePurchaseOrderService {
             purchaseOrder.setStatus(Status.ONGOING);
             // Stel voor elke OrderLine de PurchaseOrder in
             purchaseOrderDto.getOrderLines().forEach(orderLineDto -> {
-                logger.info("incoming material:" + orderLineDto.getAmount() + orderLineDto.getMaterialName());
+                logger.info("incoming material: {} {}", orderLineDto.getAmount(), orderLineDto.getMaterialName());
                 Material material = materialService.findMaterialByType(orderLineDto.getMaterialName());
                 OrderLine orderLine = new OrderLine(orderLineDto.getAmount(), material);
                 orderLine.setPurchaseOrder(purchaseOrder);

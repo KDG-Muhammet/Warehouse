@@ -24,9 +24,6 @@ public class DeliveryDto {
         return deliveryTime;
     }
 
-    public void setDeliveryTime(LocalDateTime deliveryTime) {
-        this.deliveryTime = deliveryTime;
-    }
 
     public String getMaterialType() {
         return materialType;
@@ -38,10 +35,6 @@ public class DeliveryDto {
 
     public UUID getWarehouseId() {
         return warehouseId;
-    }
-
-    public void setWarehouseId(UUID warehouseId) {
-        this.warehouseId = warehouseId;
     }
 
     public BigDecimal getAmount() {

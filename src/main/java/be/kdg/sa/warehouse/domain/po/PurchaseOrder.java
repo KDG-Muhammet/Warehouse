@@ -48,10 +48,6 @@ public class PurchaseOrder {
         return referenceUUID;
     }
 
-    public void setReferenceUUID(UUID referenceUUID) {
-        this.referenceUUID = referenceUUID;
-    }
-
     public String getPoNumber() {
         return poNumber;
     }
@@ -64,16 +60,8 @@ public class PurchaseOrder {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(Date purchaseDate) {
-        this.purchaseDate = purchaseDate;
-    }
-
     public Buyer getBuyer() {
         return buyer;
-    }
-
-    public void setBuyer(Buyer buyer) {
-        this.buyer = buyer;
     }
 
     public Seller getSeller() {
@@ -86,10 +74,6 @@ public class PurchaseOrder {
 
     public List<OrderLine> getOrderLines() {
         return orderLines;
-    }
-
-    public void setOrderLines(List<OrderLine> orderLines) {
-        this.orderLines = orderLines;
     }
 
     public Status getStatus() {

@@ -44,41 +44,43 @@ public class UpdateWarehouseService {
     public void updateWarehouse(PurchaseOrder purchaseOrder) {
         for (OrderLine orderLine : purchaseOrder.getOrderLines()) {
             Optional<Warehouse> warehouseOptional = warehouseService.findWarehouseBySellerUUIDAndMaterial_Id(purchaseOrder.getSeller().getUUID(), orderLine.getMaterial().getId());
-            Warehouse warehouse = warehouseOptional.get();
+            if (warehouseOptional.isPresent()) {
+                Warehouse warehouse = warehouseOptional.get();
 
-            BigDecimal amountToDeduct = BigDecimal.valueOf(orderLine.getAmount() * convertToTon);
-            BigDecimal remainingAmountToDeduct = amountToDeduct;
+                BigDecimal amountToDeduct = BigDecimal.valueOf(orderLine.getAmount() * convertToTon);
+                BigDecimal remainingAmountToDeduct = amountToDeduct;
 
-            List<Delivery> deliveries = warehouse.getDeliveries().stream()
-                    .sorted(Comparator.comparing(Delivery::getDeliveryDate))
-                    .toList();
-            int count = 0;
-            for (Delivery delivery : deliveries) {
-                if (remainingAmountToDeduct.compareTo(BigDecimal.ZERO) <= 0) {
-                    logger.info("   done calculating amount for deliveries : {} ", remainingAmountToDeduct);
-                    break;
+                List<Delivery> deliveries = warehouse.getDeliveries().stream()
+                        .sorted(Comparator.comparing(Delivery::getDeliveryDate))
+                        .toList();
+                int count = 0;
+                for (Delivery delivery : deliveries) {
+                    if (remainingAmountToDeduct.compareTo(BigDecimal.ZERO) <= 0) {
+                        logger.info("   done calculating amount for deliveries : {} ", remainingAmountToDeduct);
+                        break;
+                    }
+                    BigDecimal availableAmount = delivery.getAmount();
+
+                    if (availableAmount.compareTo(remainingAmountToDeduct) <= 0) {
+                        remainingAmountToDeduct = remainingAmountToDeduct.subtract(availableAmount);
+                        delivery.setAmount(BigDecimal.ZERO);
+                        count++;
+                        logger.info("   Used entire delivery {}. Remaining amount to deduct: {}",count, remainingAmountToDeduct);
+                    } else {
+                        delivery.setAmount(availableAmount.subtract(remainingAmountToDeduct));
+                        count++;
+                        logger.info("   delivery {} had more amount then in orderline. used amount: {}. current amount of delevery: {}",count, remainingAmountToDeduct, delivery.getAmount());
+                        remainingAmountToDeduct = BigDecimal.ZERO;
+                    }
+
+                    int daysStored = delivery.getDays();
+                    delivery.setCostPrice(calculateStoragePricePerDelivery(daysStored,delivery.getStoragePrice(),delivery.getAmount()));
                 }
-                BigDecimal availableAmount = delivery.getAmount();
 
-                if (availableAmount.compareTo(remainingAmountToDeduct) <= 0) {
-                    remainingAmountToDeduct = remainingAmountToDeduct.subtract(availableAmount);
-                    delivery.setAmount(BigDecimal.ZERO);
-                    count++;
-                    logger.info("   Used entire delivery {}. Remaining amount to deduct: {}",count, remainingAmountToDeduct);
-                } else {
-                    delivery.setAmount(availableAmount.subtract(remainingAmountToDeduct));
-                    count++;
-                    logger.info("   delivery {} had more amount then in orderline. used amount: {}. current amount of delevery: {}",count, remainingAmountToDeduct, delivery.getAmount());
-                    remainingAmountToDeduct = BigDecimal.ZERO;
-                }
-
-                int daysStored = delivery.getDays();
-                delivery.setCostPrice(calculateStoragePricePerDelivery(daysStored,delivery.getStoragePrice(),delivery.getAmount()));
+                BigDecimal availableStock = warehouse.getOccupancy();
+                warehouse.setOccupancy(availableStock.subtract(amountToDeduct));
+                logger.info("   lower warehouse Occupancy by  : {} ", amountToDeduct);
             }
-
-            BigDecimal availableStock = warehouse.getOccupancy();
-            warehouse.setOccupancy(availableStock.subtract(amountToDeduct));
-            logger.info("   lower warehouse Occupancy by  : {} ", amountToDeduct);
         }
     }
 }

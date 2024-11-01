@@ -45,32 +45,16 @@ public class PurchaseOrderDto {
         return buyerName;
     }
 
-    public void setBuyerName(String buyerName) {
-        this.buyerName = buyerName;
-    }
-
     public String getBuyerAddress() {
         return buyerAddress;
-    }
-
-    public void setBuyerAddress(String buyerAddress) {
-        this.buyerAddress = buyerAddress;
     }
 
     public String getSellerName() {
         return sellerName;
     }
 
-    public void setSellerName(String sellerName) {
-        this.sellerName = sellerName;
-    }
-
     public Date getDate() {
         return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public List<OrderLineDto> getOrderLines() {
@@ -84,10 +68,6 @@ public class PurchaseOrderDto {
 
     public String getSellerAddress() {
         return sellerAddress;
-    }
-
-    public void setSellerAddress(String sellerAddress) {
-        this.sellerAddress = sellerAddress;
     }
 
     public Status getStatus() {

@@ -28,7 +28,7 @@ public class GetPurchaseOrderService {
 
         purchaseOrders.forEach(purchaseOrder -> {
             PurchaseOrderDto purchaseOrderDto = new PurchaseOrderDto(purchaseOrder);
-            Collection<OrderLine> orderLineCollection = orderLineService.findOrderLinesbyPurchaseOrderId(purchaseOrder.getReferenceUUID());
+            Collection<OrderLine> orderLineCollection = orderLineService.findOrderLinesByPurchaseOrderId(purchaseOrder.getReferenceUUID());
             List<OrderLineDto> orderLineDtoArrayList = new ArrayList<>();
             orderLineCollection.forEach(orderLine -> {
                 OrderLineDto orderLineDto = new OrderLineDto(orderLine);

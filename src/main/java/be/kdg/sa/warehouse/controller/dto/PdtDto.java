@@ -20,10 +20,6 @@ public class PdtDto {
         return warehouseId;
     }
 
-    public void setWarehouseId(UUID warehouseId) {
-        this.warehouseId = warehouseId;
-    }
-
     public MaterialType getMaterialType() {
         return materialType;
     }
@@ -34,9 +30,5 @@ public class PdtDto {
 
     public LocalDateTime getDeliveryTime() {
         return deliveryTime;
-    }
-
-    public void setDeliveryTime(LocalDateTime deliveryTime) {
-        this.deliveryTime = deliveryTime;
     }
 }

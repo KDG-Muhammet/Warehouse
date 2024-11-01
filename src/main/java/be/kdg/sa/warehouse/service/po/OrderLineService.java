@@ -16,12 +16,7 @@ public class OrderLineService {
         this.orderLineRepository = orderLineRepository;
     }
 
-    public Collection<OrderLine> findOrderLinessWithPurchaseOrders() {
-        return orderLineRepository.findAll();
-
-    }
-
-    public Collection<OrderLine> findOrderLinesbyPurchaseOrderId(UUID referenceUUID) {
+    public Collection<OrderLine> findOrderLinesByPurchaseOrderId(UUID referenceUUID) {
         return orderLineRepository.getOrderLinesByPurchaseOrderReferenceUUID(referenceUUID);
     }
 }

@@ -8,12 +8,6 @@ public class InvoiceDto {
     private BigDecimal totalCommisionCost;
     private BigDecimal totalStorageCost;
 
-    public InvoiceDto(SellerDto seller, BigDecimal totalCommisionCost, BigDecimal totalStorageCost) {
-        this.seller = seller;
-        this.totalCommisionCost = totalCommisionCost;
-        this.totalStorageCost = totalStorageCost;
-    }
-
     public InvoiceDto() {
 
     }
@@ -30,15 +24,8 @@ public class InvoiceDto {
         return totalCommisionCost;
     }
 
-    public void setTotalCommisionCost(BigDecimal totalCommisionCost) {
-        this.totalCommisionCost = totalCommisionCost;
-    }
-
     public BigDecimal getTotalStorageCost() {
         return totalStorageCost;
     }
 
-    public void setTotalStorageCost(BigDecimal totalStorageCost) {
-        this.totalStorageCost = totalStorageCost;
-    }
 }

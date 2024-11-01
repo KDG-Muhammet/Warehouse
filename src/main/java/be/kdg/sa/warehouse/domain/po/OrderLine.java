@@ -27,10 +27,6 @@ public class OrderLine {
     protected OrderLine() {
     }
 
-    public UUID getOrderLineId() {
-        return orderLineId;
-    }
-
     public double getAmount() {
         return amount;
     }
@@ -46,10 +42,6 @@ public class OrderLine {
 
     public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
         this.purchaseOrder = purchaseOrder;
-    }
-
-    public void setOrderLineId(UUID orderLineId) {
-        this.orderLineId = orderLineId;
     }
 
     public void setAmount(double amount) {

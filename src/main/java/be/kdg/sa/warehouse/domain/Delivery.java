@@ -52,10 +52,6 @@ public class Delivery {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(LocalDateTime deliveryDate) {
-        this.deliveryDate = deliveryDate;
-    }
-
     public Warehouse getWarehouse() {
         return warehouse;
     }
