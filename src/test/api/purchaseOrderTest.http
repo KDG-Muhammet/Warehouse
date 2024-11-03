@@ -4,7 +4,7 @@ GET localhost:8081/api/purchaseOrders/testpoNumber
 ###GET all PurchaseOrders
 GET localhost:8081/api/purchaseOrders
 
-###POST new order
+###POST new order that wil complete becasue of suffient storage (IJZERERTS in warehouse 990t)
 POST http://localhost:8081/api/purchaseOrders
 Content-Type: application/json
 
@@ -23,6 +23,30 @@ Content-Type: application/json
     },
     {
       "amount": 0.01,
+      "materialName": "IJZERERTS"
+    }
+  ]
+}
+
+###POST new order that wil go on hold becasue of insuffient storage (IJZERERTS in warehouse 990t)
+POST http://localhost:8081/api/purchaseOrders
+Content-Type: application/json
+
+{
+  "poNumber": "testpoNumber2",
+  "buyerName": "buyer",
+  "buyerAddress": "test address buyer",
+  "sellerName": "seller",
+  "sellerAddress": "test address seller",
+  "date": "2024-09-29T00:00:00",
+  "orderLines": [
+    {
+      "amount": 50,
+      "materialName": "GIPS"
+
+    },
+    {
+      "amount": 1,
       "materialName": "IJZERERTS"
     }
   ]

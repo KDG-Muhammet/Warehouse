@@ -1,7 +1,0 @@
-POST http://localhost:8081/api/warehouse/sendPurchaseOrder
-Content-Type: application/json
-
-{
-  "poNumber": "PO12345",
-  "vesselNumber": "VN98768"
-}
