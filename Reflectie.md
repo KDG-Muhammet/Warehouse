@@ -56,3 +56,34 @@ _eventuele vragen voor je coach_
 
 ## Post coaching
 ### Feedback
+
+# V2
+## Pre coaching 04/14/2024
+### Geschatte Progress (in %): 95%
+### Status
+_Waar sta je globaal? wat loopt er goed/slecht? hoe verloopt de samenwerking? Wie heeft globaal welke delen uitgewerkt_
+
+Algemeen: samenwerking verloopt goed. Veel progress gemaakt.
+Alles normaal gezien uitgewerkt.
+
+### Stories
+_(Enkel voor stories die speciale aandacht vragen)_
+
+### Quality
+_Acties (refactoring,..) die nog geplant staan om de kwaliteit van project te verhogen_
+_(maak hier issues voor aan!)_
+
+### Vragen
+_eventuele vragen voor je coach_
+
+## Post coaching
+### Feedback
+
+# One Pager
+
+---
+    Justin Van Leuvenum
+[JustinVanLeuvenum.pdf](JustinVanLeuvenum.pdf)
+
+    MuhammetMurat
+[MuhammetMurat.pdf](MuhammetMurat.pdf)
