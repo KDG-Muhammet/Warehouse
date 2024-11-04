@@ -56,10 +56,15 @@ _eventuele vragen voor je coach_
 
 ## Post coaching
 ### Feedback
+#### Werken tussen water en warehouse aanpassen
+#### Werken tussen land en warehouse aanpassen
+#### Geen magic number gebruiken
+#### Methodes geen hoofdletter
+#### Ongebruikte code wegdoen
 
 # V3
 ## Pre coaching 04/14/2024
-### Geschatte Progress (in %): 95%
+### Geschatte Progress (in %): 100%
 ### Status
 _Waar sta je globaal? wat loopt er goed/slecht? hoe verloopt de samenwerking? Wie heeft globaal welke delen uitgewerkt_
 
